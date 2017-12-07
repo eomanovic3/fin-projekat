@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EBS APP</title>
+    <link rel="stylesheet" href="~/Style/CSS/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+        
+        <div id="blurredbackground"></div>
+
+        <form class="containerstyle" method="POST" action="~/Login/Login">
+
+            <img src="~/Style/Pictures/etf.png"/>
+
+                <div class="form-group">
+                    <input class="form-control input-lg" name="username" placeholder="Username" type="text" />
+                </div>
+                <div class="form-group">
+                    <input class="form-control input-lg" name="password" placeholder="Password" type="password" />
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg"> Login </button>
+                </div>
+</form>
+
+</body>
+</html>
