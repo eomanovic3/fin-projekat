@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,6 +104,10 @@
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="Global.asax" />
+    <Content Include="libraries\RGraph.bar.js" />
+    <Content Include="libraries\RGraph.common.key.js" />
+    <Content Include="libraries\RGraph.svg.common.core.js" />
+    <Content Include="Scripts\StudentServiceCharts.js" />
     <Content Include="Style\CSS\default.css" />
     <Content Include="Style\Pictures\background.jpg" />
     <Content Include="Style\Pictures\background.png" />
