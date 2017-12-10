@@ -12,7 +12,7 @@ namespace ebs.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            if(Session["Username"] != null)
+            if (Session["username"] != null)
             {
                 Session.Abandon();
             }

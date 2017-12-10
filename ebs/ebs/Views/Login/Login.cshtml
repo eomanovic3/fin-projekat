@@ -22,6 +22,8 @@
     <script src="~/libraries/RGraph.drawing.yaxis.js"></script>
     <script src="~/libraries/RGraph.drawing.xaxis.js"></script>
     <script src="~/libraries/RGraph.line.js"></script>
+    <script src="~/libraries/RGraph.common.effects.js"></script>
+    <script src="~/libraries/RGraph.pie.js"></script>
     <script src="~/libraries/RGraph.drawing.marker1.js"></script>
     <script src="~/libraries/RGraph.drawing.marker2.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -30,11 +32,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="~/StudentService/StudentService">Student service</a></li>
-                <li><a href="#">Financial service</a></li>
-                <li><a href="#">Academic service</a></li>
-                <li class="dropdown">
+                <li class="active"><a>@Html.ActionLink("Home", "Index", "Index")</a><span class="sr-only">(current)</span></a></li>
+                <li><a>@Html.ActionLink("Student service", "Student", "Student")</a></li>
+                <li><a>@Html.ActionLink("Financial service", "Financial", "Financial")</a></li>
+                <li><a>@Html.ActionLink("Academic service", "Academic", "Academic")</a></li>
+                <!--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Option</a></li>
@@ -45,7 +47,7 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="#">One more separated link</a></li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -55,72 +57,7 @@
         </div>
     </nav>
 
-    <div class="container">
-
-        <div style="display: inline-block; margin: 35px">
-            <canvas id="cvsBacheleor" width="800" height="400">[No canvas support]</canvas>
-        </div>
-        <div style="display: inline-block; margin: 35px">
-            <canvas id="cvsMaster" width="800" height="400">[No canvas support]</canvas>
-        </div>
-
-        <script src="~/Scripts/StudentServiceCharts.js"></script>
-
-        <!--
-
-        <div style="display: inline-block; margin: 35px">
-            <canvas id="cvs" width="800" height="300">[No canvas support]</canvas>
-        </div>
-
-        <script>
-        $(document).ready(function () {
-            GetBar();
-        });
-
-        function GetBar(tooltipShow) {
-            var canvas = document.getElementById('cvs');
-
-            $.ajax({
-                url: '/Login/GetBar',
-                type: 'POST',
-                cache: false,
-                success: function (datos) {
-                    RGraph.reset(canvas)
-                    var ytd = eval('[' + datos + ']');
-                    if (ytd.length > 0) {
-                        var line = new RGraph.Bar("csv", ytd)
-                            .set(ymax, 40)
-                            .set(unitsPost, '%')
-                            .set(labelsAbove, true)
-                            .set(labelsAboveDecimals, 1)
-                            .set(labelsAboveColor, 'black')
-                            .set(labelsAboveSize, 10)
-                            .set(hmargin, 20)
-                            .set(colors, ['#86B5BC', '#E30513', '#1C1C1B', '#86BC24', '#E5007D', '#2F8DCD', '#F9D900', '#F6A200', '#BCBCBC'])
-                            .set(colorsSequential, true)
-                            .set(labels, ['Nichtwahler', 'SPD', 'CDU', 'Grune', 'Linke', 'AfD', 'FDP', 'Piraten', 'Sonstige'])
-                            .set(textSize, 10)
-                            .set(textColor, 'gray')
-                            .set(backgroundGridVlines, false)
-                            .set(backgroundGridBorder, false)
-                            .set(noaxes, true)
-                            .set(ylabelsCount, 4)
-                            .set(title, 'ovo je graf')
-                            .set(titleX, 25)
-                            .set(titleY, 0)
-                            .set(titleHalign, 'left')
-                            .set(titleColor, '#999')
-                            .set(ylabelsOffsetx, -10)
-                            .grow({ frames: 60 });
-                    }
-                },
-            });
-        }
-
-    </script>
-
-        -->
-        <!--<div class="pic col-xs-6 col-md-4">
+        <div class="pic col-xs-6 col-md-4">
             <img src="~/Style/Pictures/bi.png" />
         </div>
 
@@ -151,9 +88,7 @@
             <p>
                 In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
             </p>
-        </div> -->
-
-    </div>
+        </div>
     
 
     <footer class="footeer">

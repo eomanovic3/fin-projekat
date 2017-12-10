@@ -94,6 +94,7 @@ C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\bin\System.Web.Webpages.Razor.xml
 C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\bin\System.Web.Helpers.xml
 C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\bin\System.Web.Mvc.xml
 C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\obj\Debug\ebs.csprojResolveAssemblyReference.cache
-C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\obj\Debug\ebs.csproj.CoreCompileInputs.cache
 C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\obj\Debug\ebs.dll
 C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\obj\Debug\ebs.pdb
+C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\bin\Oracle.DataAccess.dll
+C:\Users\Sumejja\Desktop\bazeProjekat\ebs\ebs\bin\Oracle.ManagedDataAccess.dll
