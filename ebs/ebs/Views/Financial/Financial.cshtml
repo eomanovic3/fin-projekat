@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -32,8 +31,8 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <ul class="nav navbar-nav">
-                <li><a>@Html.ActionLink("Home", "Index", "Index")</a><span class="sr-only">(current)</span></a></li>
-                <li class="active"><a>@Html.ActionLink("Student service", "Student", "Student")</a></li>
+                <li class="active"><a>@Html.ActionLink("Home", "Login", "Login")<span class="sr-only">(current)</span></a></li>
+                <li><a>@Html.ActionLink("Student service", "Student", "Student")</a></li>
                 <li><a>@Html.ActionLink("Financial service", "Financial", "Financial")</a></li>
                 <li><a>@Html.ActionLink("Academic service", "Academic", "Academic")</a></li>
                 <!--<li class="dropdown">
@@ -51,51 +50,91 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="pull-right" href="~/Home/Index">Log out</a></li>
+                <li><a></a><a class="pull-right" href="~/Home/Index">Log out</a></li>
             </ul>
 
         </div>
     </nav>
 
     <div class="container">
+        <!-- <div style="display: inline-block; margin: 35px">
+             <canvas id="cvs" width="800" height="400">[No canvas support]</canvas>
+         </div>
+
+         <script>
+             $(document).ready(function () {
+                 GetBar();
+             });
+
+             function GetBar() {
+                 var canvas = document.getElementById('cvs');
+                 var context = canvas.getContext('2d');
+                 context.clearRect(0, 0, 1500, 700);
+
+                 $.ajax({
+                     url: '/Financial/GetBar',
+                     type: 'POST',
+                     cache: false,
+                     success: function (datos) {
+                         RGraph.reset(canvas)
+                         var ytd = eval('[' + datos + ']');
+                         if (ytd.length > 0) {
+                             var line = new RGraph.Bar("cvs", ytd)
+                                 .set('labels', ['prvi', 'drugi', 'treci', 'cetvrti', 'peti'])
+                                 .set('unitsPost', 'k')
+                                 .set('shadow', false)
+                                 .set('colors', ['black'])
+                                 .set('strokestyle', 'rgba(0,0,0,0)')
+                                 .set('textSize', 14)
+                                 .set('title', 'jedan slatki bar')
+                                 .set('numyticks', 5)
+                                 .set('noxaxis', true)
+                                 .set('gutterLeft', 50)
+                                 .draw();
+                         }
+                     },
+                 });
+             }
+         </script>
+         -->
+
         <div style="display: inline-block; margin: 35px">
-            <canvas id="cvs" width="700" height="400">
-                [No canvas support]
-            </canvas>
+            <canvas id="cvsPie" width="800" height="400">[No canvas support]</canvas>
         </div>
-
-
 
         <script>
             $(document).ready(function () {
-                GetBar();
+                GetPie();
             });
 
-            function GetBar() {
-                var canvas = document.getElementById('cvs');
+            function GetPie() {
+                var canvas = document.getElementById('cvsPie');
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, 1500, 700);
 
                 $.ajax({
-                    url: '/Financial/GetBar',
+                    url: '/Financial/GetPie',
                     type: 'POST',
                     cache: false,
                     success: function (datos) {
                         RGraph.reset(canvas)
                         var ytd = eval('[' + datos + ']');
                         if (ytd.length > 0) {
-                            var line = new RGraph.Bar("cvs", ytd)
-                                .set('labels', ['prvi', 'drugi', 'treci', 'cetvrti', 'peti'])
-                                .set('unitsPost', 'k')
-                                .set('shadow', false)
-                                .set('colors', ['black'])
-                                .set('strokestyle', 'rgba(0,0,0,0)')
-                                .set('textSize', 14)
-                                .set('title', 'jedan slatki bar')
-                                .set('numyticks', 5)
-                                .set('noxaxis', true)
-                                .set('gutterLeft', 50)
-                                .draw();
+                            var line = new RGraph.Pie("cvsPie", ytd)
+                                .set('strokestyle', 'white')
+                                .set('colors', ['#DDDF0F', '#7798BF'])
+                                .set('linewidth', 3)
+                                .set('exploded', [15])
+                                .set('shadowOffsetx', 2)
+                                .set('shadowOffsety', 2)
+                                .set('labels', ['Prisutni', 'Odsutni'])
+                                .set('labelsSticksList', true)
+                                .set('labelsSticksUsecolors', false)
+                                .set('textColor', '#000')
+                                .set('textSize', 12)
+                                .set('textAccessible', true)
+                                .roundRobin();
+
                         }
                     },
                 });

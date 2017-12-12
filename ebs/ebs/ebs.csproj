@@ -106,6 +106,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="libraries\RGraph.bar.js" />
     <Content Include="libraries\RGraph.common.key.js" />
@@ -129,6 +130,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="db\DBConnection.cs" />
+    <Compile Include="db\OracleDbConnection.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

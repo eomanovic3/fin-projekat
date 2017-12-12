@@ -11,7 +11,15 @@ namespace ebs.Controllers
         // GET: Academic
         public ActionResult Academic()
         {
-            return View();
+            if (Session["Username"] == null)
+            {
+                Session.Abandon();
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

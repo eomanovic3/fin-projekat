@@ -8,11 +8,62 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Academic</title>
+    <title>Student</title>
+    <link rel="stylesheet" href="~/Style/CSS/default.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/libraries/RGraph.bar.js"></script>
+    <script src="~/libraries/RGraph.common.core.js"></script>
+    <script src="~/libraries/RGraph.common.dynamic.js"></script>
+    <script src="~/libraries/RGraph.common.key.js"></script>
+    <script src="~/libraries/RGraph.drawing.rect.js"></script>
+    <script src="~/libraries/RGraph.common.tooltips.js"></script>
+    <script src="~/libraries/RGraph.drawing.yaxis.js"></script>
+    <script src="~/libraries/RGraph.drawing.xaxis.js"></script>
+    <script src="~/libraries/RGraph.line.js"></script>
+    <script src="~/libraries/RGraph.common.effects.js"></script>
+    <script src="~/libraries/RGraph.pie.js"></script>
+    <script src="~/libraries/RGraph.drawing.marker1.js"></script>
+    <script src="~/libraries/RGraph.drawing.marker2.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-    <div>
-        <h1>dodana podstrana</h1> 
-    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="active"><a>@Html.ActionLink("Home", "Login", "Login")<span class="sr-only">(current)</span></a></li>
+                <li><a>@Html.ActionLink("Student service", "Student", "Student")</a></li>
+                <li><a>@Html.ActionLink("Financial service", "Financial", "Financial")</a></li>
+                <li><a>@Html.ActionLink("Academic service", "Academic", "Academic")</a></li>
+                <!--<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Option</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>-->
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a></a><a class="pull-right" href="~/Home/Index">Log out</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsBacheleor" width="800" height="400">[No canvas support]</canvas>
+        </div>
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsMaster" width="800" height="400">[No canvas support]</canvas>
+        </div>
+   </div>
 </body>
 </html>
