@@ -8,6 +8,7 @@ namespace ebs.Controllers
 {
     public class AcademicController : Controller
     {
+        // Get Academic
         public ActionResult Academic()
         {
             if (Session["Username"] == null)
