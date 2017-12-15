@@ -1,103 +1,15 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/Navbar.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Financial</title>
-    <link rel="stylesheet" href="~/Style/CSS/default.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="~/libraries/RGraph.bar.js"></script>
-    <script src="~/libraries/RGraph.common.core.js"></script>
-    <script src="~/libraries/RGraph.common.dynamic.js"></script>
-    <script src="~/libraries/RGraph.common.key.js"></script>
-    <script src="~/libraries/RGraph.drawing.rect.js"></script>
-    <script src="~/libraries/RGraph.common.tooltips.js"></script>
-    <script src="~/libraries/RGraph.drawing.yaxis.js"></script>
-    <script src="~/libraries/RGraph.drawing.xaxis.js"></script>
-    <script src="~/libraries/RGraph.line.js"></script>
-    <script src="~/libraries/RGraph.common.effects.js"></script>
-    <script src="~/libraries/RGraph.pie.js"></script>
-    <script src="~/libraries/RGraph.drawing.marker1.js"></script>
-    <script src="~/libraries/RGraph.drawing.marker2.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-</head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li class="active"><a>@Html.ActionLink("Home", "Login", "Login")<span class="sr-only">(current)</span></a></li>
-                <li><a>@Html.ActionLink("Student service", "Student", "Student")</a></li>
-                <li><a>@Html.ActionLink("Financial service", "Financial", "Financial")</a></li>
-                <li><a>@Html.ActionLink("Academic service", "Academic", "Academic")</a></li>
-                <!--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Option</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>-->
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a></a><a class="pull-right" href="~/Home/Index">Log out</a></li>
-            </ul>
-
-        </div>
-    </nav>
+<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
 
     <div class="container">
-        <!-- <div style="display: inline-block; margin: 35px">
-             <canvas id="cvs" width="800" height="400">[No canvas support]</canvas>
-         </div>
-
-         <script>
-             $(document).ready(function () {
-                 GetBar();
-             });
-
-             function GetBar() {
-                 var canvas = document.getElementById('cvs');
-                 var context = canvas.getContext('2d');
-                 context.clearRect(0, 0, 1500, 700);
-
-                 $.ajax({
-                     url: '/Financial/GetBar',
-                     type: 'POST',
-                     cache: false,
-                     success: function (datos) {
-                         RGraph.reset(canvas)
-                         var ytd = eval('[' + datos + ']');
-                         if (ytd.length > 0) {
-                             var line = new RGraph.Bar("cvs", ytd)
-                                 .set('labels', ['prvi', 'drugi', 'treci', 'cetvrti', 'peti'])
-                                 .set('unitsPost', 'k')
-                                 .set('shadow', false)
-                                 .set('colors', ['black'])
-                                 .set('strokestyle', 'rgba(0,0,0,0)')
-                                 .set('textSize', 14)
-                                 .set('title', 'jedan slatki bar')
-                                 .set('numyticks', 5)
-                                 .set('noxaxis', true)
-                                 .set('gutterLeft', 50)
-                                 .draw();
-                         }
-                     },
-                 });
-             }
-         </script>
-         -->
-
+      
         <div style="display: inline-block; margin: 35px">
             <canvas id="cvsPie" width="800" height="400">[No canvas support]</canvas>
         </div>
@@ -141,5 +53,3 @@
             }
         </script>
     </div>
-</body>
-</html>

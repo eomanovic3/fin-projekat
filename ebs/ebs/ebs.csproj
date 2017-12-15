@@ -117,6 +117,7 @@
     <Content Include="Style\CSS\style.css" />
     <Content Include="Style\Pictures\bi.jpg" />
     <Content Include="Style\Pictures\bi.png" />
+    <Content Include="Style\Pictures\etf-zgrada.jpg" />
     <Content Include="Style\Pictures\etf.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -124,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AcademicController.cs" />
     <Compile Include="Controllers\FinancialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -144,6 +146,9 @@
     <Content Include="Views\Academic\Academic.cshtml" />
     <Content Include="Views\Student\Student.cshtml" />
     <Content Include="Views\Financial\Financial.cshtml" />
+    <Content Include="Views\Shared\Navbar.cshtml" />
+    <Content Include="Views\About.cshtml" />
+    <Content Include="Views\About\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
