@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AcademicController.cs" />
+    <Compile Include="Controllers\AllStudentsController.cs" />
     <Compile Include="Controllers\FinancialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -149,6 +150,7 @@
     <Content Include="Views\Shared\Navbar.cshtml" />
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\About\About.cshtml" />
+    <Content Include="Views\AllStudents\AllStudents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

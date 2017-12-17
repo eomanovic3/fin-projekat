@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ebs.db;
+using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +8,12 @@ using System.Web.Mvc;
 
 namespace ebs.Controllers
 {
+    
     public class FinancialController : Controller
     {
+        static List<string> alldata = null;
+        OracleDbConnection conn = new OracleDbConnection();
+
         // GET: Financial
         public ActionResult Financial()
         {
@@ -22,26 +28,31 @@ namespace ebs.Controllers
             }
         }
 
-        public JsonResult GetBar()
+        public JsonResult GetDataForChartAll()
         {
-            List<string> returnData = new List<string>();
+            if (alldata == null)
+            {
+                conn.conn.Open();
+                string query = "SELECT Sum(b.salary) AS plata, a.description AS opis FROM bp07.TypeOfEmployee a, bp07.EmployeeDetails b WHERE b.typeofemployeeid = a.id GROUP BY a.description";
+                OracleCommand cmd = new OracleCommand(query, conn.conn);
+                OracleDataReader rd = cmd.ExecuteReader();
 
-            returnData.Add("33.1");
-            returnData.Add("14.5");
-            returnData.Add("11.8");
-            returnData.Add("10.2");
-            returnData.Add("10.4");
+                List<string> result = new List<string>();
 
-            return Json(returnData, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult GetPie()
-        {
-            List<string> returnData = new List<string>();
+                while (rd.Read())
+                {
+                    result.Add(rd.GetFloat(0).ToString());
+                }
+                                
+                alldata = result;
+                conn.conn.Close();
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(alldata, JsonRequestBehavior.AllowGet);
 
-            returnData.Add("1750");
-            returnData.Add("6250");
-
-            return Json(returnData, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

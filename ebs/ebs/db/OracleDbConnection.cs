@@ -16,7 +16,6 @@ namespace ebs.db
         {
             myConnectionString = "Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 80.65.65.66)(PORT = 1521)) (CONNECT_DATA = (SID = etflab)));User Id=BP11;Password=TZ7j71rm; Connection Timeout=120;";
             conn = new OracleConnection(myConnectionString);
-            conn.Open();
         }
     }
 }
