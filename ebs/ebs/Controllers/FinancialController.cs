@@ -17,15 +17,7 @@ namespace ebs.Controllers
         // GET: Financial
         public ActionResult Financial()
         {
-            if (Session["Username"] == null)
-            {
-                Session.Abandon();
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
                 return View();
-            }
         }
 
         public JsonResult GetDataForChartAll()
