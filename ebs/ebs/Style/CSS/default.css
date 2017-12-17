@@ -4,9 +4,9 @@
 }
 body,
 html { height: 100%;}
-.nav .open > a, 
+.nav .open > a {color:white!important;}
 .nav .open > a:hover, 
-.nav .open > a:focus {background-color: transparent;}
+.nav .open > a:focus {background-color: transparent; }
 
 .naslov{
     color: #256bdb;
@@ -17,6 +17,8 @@ html { height: 100%;}
 .sadrzaj{
     text-align: justify;
     text-justify: inter-word;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 #wrapper {
     padding-left: 0;
@@ -27,15 +29,15 @@ html { height: 100%;}
 }
 
 #wrapper.toggled {
-    padding-left: 220px;
+    padding-left: 320px!important;
 }
 
 #sidebar-wrapper {
     z-index: 1000;
-    left: 220px;
+    left: 320px;
     width: 0;
     height: 100%;
-    margin-left: -220px;
+    margin-left: -320px;
     overflow-y: auto;
     overflow-x: hidden;
     background: #1a1a1a;
@@ -50,7 +52,7 @@ html { height: 100%;}
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 220px;
+    width: 320px!important;
 }
 
 #page-content-wrapper {
@@ -60,7 +62,7 @@ html { height: 100%;}
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -220px;
+    margin-right: -320px;
 }
 
 /*-------------------------------*/
@@ -70,17 +72,20 @@ html { height: 100%;}
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 220px;
+    width: 320px!important;;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .sidebar-nav li {
-    position: relative; 
-    line-height: 20px;
+
+    position: relative;
+    line-height: 30px!important;
     display: inline-block;
     width: 100%;
+    margin-left: 18px;
+    margin-top: 2px;
 }
 
 .sidebar-nav li:before {
@@ -136,12 +141,19 @@ html { height: 100%;}
 
 }
 
+.nav li a{
+    position: relative;
+    display: block;
+    padding: 13px 20px;
+    font-size: 24px;
+}
+
 .sidebar-nav li a {
     display: block;
     color: #ddd;
     text-decoration: none;
     padding: 10px 15px 10px 30px;    
-    font-size: 18px;
+    font-size: 25px;
 }
 
 .sidebar-nav li a:hover,
@@ -169,6 +181,14 @@ html { height: 100%;}
     border: none;
     background-color: #222;
     box-shadow: none;
+}
+
+.dropdown-menu li a{
+  
+    color: white!important;
+    font-size: 16px!important;
+    padding-left: 40px!important;
+    padding-bottom: 20px!important;
 }
 
 /*-------------------------------*/

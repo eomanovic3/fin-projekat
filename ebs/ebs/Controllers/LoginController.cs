@@ -16,6 +16,14 @@ namespace ebs.Controllers
         // GET: Login
         public ActionResult Login(FormCollection collection)
         {
+            if (Session["Username"] != null && Session["Password"] != null)
+            {
+                if (Session["Username"].ToString().Length > 0 && Session["Password"].ToString().Length > 0)
+                {
+                    return View();
+                }
+            }
+
             string username = collection["username"];
             string password = collection["password"];
 
