@@ -6,37 +6,155 @@
     <span class="hamb-middle"></span>
     <span class="hamb-bottom"></span>
 </button>
-    <div class="container">
-        <div style="display: inline-block; margin: 35px">
-            <canvas id="cvsBacheleor" width="800" height="400">[No canvas support]</canvas>
-        </div>
-        <div style="display: inline-block; margin: 35px">
-            <canvas id="cvsMaster" width="800" height="400">[No canvas support]</canvas>
-        </div>
 
-        <script>
+
+
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1 cnv first">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsBarChart" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 cnv second">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsLineChart" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1 cnv third">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsPie" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 cnv fourth">
+        <div style="display: inline-block; margin-left: 60px">
+            <canvas id="cvsHbar" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+</div>
+
+<script>
             $(document).ready(function () {
-                GetChartBacheleor();
-                GetChartMaster();
+                GetChartAll();
             });
 
-            function GetChartBacheleor(tooltipShow) {
-                var canvas = document.getElementById('cvsBacheleor');
+            $('.first').click(function (e) {
+
+                if ($(".first").hasClass("fullscreen")) {
+                    $('.first').toggleClass('fullscreen');
+                    $('.second').show();
+                    $('.third').show();
+                    $('.fourth').show();
+                    $('#cvsBarChart').height(350);
+                    $('#cvsBarChart').width(600);
+                }
+
+                else {
+                    $('.first').toggleClass('fullscreen');
+                    $('#cvsBarChart').height(800);
+                    $('#cvsBarChart').width(1200);
+                    $('.second').hide();
+                    $('.third').hide();
+                    $('.fourth').hide();
+                }
+                GetChartAll();
+
+            });
+
+
+            $('.second').click(function (e) {
+
+                if ($(".second").hasClass("fullscreen")) {
+                    $('.second').toggleClass('fullscreen');
+                    $('.first').show();
+                    $('.third').show();
+                    $('.fourth').show();
+                    $('#cvsLineChart').height(350);
+                    $('#cvsLineChart').width(600);
+                }
+
+                else {
+                    $('.second').toggleClass('fullscreen');
+                    $('#cvsLineChart').height(800);
+                    $('#cvsLineChart').width(1200);
+                    $('.first').hide();
+                    $('.third').hide();
+                    $('.fourth').hide();
+                }
+                GetChartAll();
+            });
+
+
+            $('.third').click(function (e) {
+
+                if ($(".third").hasClass("fullscreen")) {
+                    $('.third').toggleClass('fullscreen');
+                    $('.second').show();
+                    $('.first').show();
+                    $('.fourth').show();
+                    $('#cvsPie').height(350);
+                    $('#cvsPie').width(600);
+                }
+
+                else {
+                    $('.third').toggleClass('fullscreen');
+                    $('#cvsPie').height(800);
+                    $('#cvsPie').width(1300);
+                    $('.second').hide();
+                    $('.first').hide();
+                    $('.fourth').hide();
+                }
+                GetChartAll();
+
+            });
+
+
+            $('.fourth').click(function (e) {
+
+                if ($(".fourth").hasClass("fullscreen")) {
+                    $('.fourth').toggleClass('fullscreen');
+                    $('.second').show();
+                    $('.third').show();
+                    $('.first').show();
+                    $('#cvsHbar').height(350);
+                    $('#cvsHbar').width(600);
+                }
+
+                else {
+                    $('.fourth').toggleClass('fullscreen');
+                    $('#cvsHbar').height(800);
+                    $('#cvsHbar').width(1200);
+                    $('.second').hide();
+                    $('.third').hide();
+                    $('.first').hide();
+                }
+                GetChartAll();
+
+            });
+
+            function GetChartAll(tooltipShow) {
+                var canvas = document.getElementById('cvsBarChart');
+                var canvas2 = document.getElementById('cvsLineChart');
+                var canvas3 = document.getElementById('cvsPie');
+
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, 1500, 700);
-                yaxisName = '%'
+                yaxisName = 'students'
 
                 $.ajax({
-                    url: '/Student/GetDataForChartBacheleor',
+                    url: '/Student/GetDataForChartAll',
                     type: 'POST',
                     cache: false,
                     success: function (datos) {
-                        RGraph.reset(canvas)
+                        RGraph.reset(canvas);
+                        RGraph.reset(canvas2);
+                        RGraph.reset(canvas3);
                         var ytd = eval('[' + datos + ']');
                         if (ytd.length > 0) {
-                            var tooltip1 = ['2013 - <b>' + ytd[0] + '%</b>', '2014 - <b>' + ytd[1] + '%</b>', '2015 - <b>' + ytd[2] + '%</b>', '2016 - <b>' + ytd[3] + '%</b>', '2017 - <b>' + ytd[4] + '%</b>'];
-                            var line = new RGraph.Line("cvsBacheleor", ytd)
-                                .set('labels', ['2013', '2014', '2015', '2016', '2017'])
+                            var tooltip1 = ['Bachelor - <b>' + ytd[0] + '%</b>', 'Master - <b>' + ytd[1] + '%</b>', 'PhD - <b>' + ytd[2] + '%</b>'];
+                            var line = new RGraph.Line("cvsLineChart", ytd)
+                                .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])
                                 .set('gutter.left', 100)
                                 .set('colors', ['#181B1E'])
                                 .set('background.barcolor1', '#FFF')
@@ -45,7 +163,7 @@
                                 .set('linewidth', 3)
                                 .set('shadow', true)
                                 .set('numxticks', 2)
-                                .set('key', ['Number of enrolled students over the years'])
+                                .set('key', ['Number of enrolled students by year'])
                                 .set('key.position', 'gutter')
                                 .set('key.interactive', true)
                                 .set('shadow.blur', 20)
@@ -59,77 +177,84 @@
                                 .set('gutter.bottom', 40)
                                 .set('gutter.top', 40)
                                 .set('tooltips.hotspot.xonly', true)
+                                .set('textAccessible', false)
                                 .draw()
                                 .trace();
 
-                            var yaxis = new RGraph.Drawing.YAxis('cvsBacheleor', line.gutterLeft)
+                            var yaxis = new RGraph.Drawing.YAxis('cvsLineChart', line.gutterLeft)
                                 .set('max', line.max)
-                                .set('title', 'Bacheleor students')
+                                .set('title', 'Number of students')
                                 .set('colors', ['black'])
                                 .set('gutter.bottom', 55)
                                 .set('gutter.top', 40)
-                                //.set('max', ymaxValue)
-                                //.set('min', yminValue)
                                 .draw();
+
+                            var bar = new RGraph.Bar("cvsBarChart", ytd)
+                            .set('textSize', 14)
+                            .set('textAccessible', true)
+                             .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])
+                            .set('shadowBlur', 0)
+                            .set('shadowOffsetx', 2)
+                            .set('shadowOffsety', 2)
+                            .set('strokestyle', 'rgba(0,0,0,0)')
+                            .set('backgroundGridVlines', false)
+                            .set('backgroundGridBorder', false) //85392
+                            .set('noxaxis', true)
+                            .set('colorsSequential', true)
+                            .set('colors', ['#4AACC5', '#DDDF0F', '#9BBB58', '#F79647', '#C0504E', '#4AACC5', '#DDDF0F', '#9BBB58', '#F79647', '#C0504E', '#4AACC5', '#DDDF0F', '#9BBB58', '#F79647', '#C0504E'])
+
+                            .grow();
+
+
+                            var pie = new RGraph.Pie("cvsPie", ytd)
+                             .set('strokestyle', 'white')
+                             .set('colors', ['#4F81BC', '#C0504E', '#9BBB58', '#8064A1', '#DDDF0F', '#7798BF', '#181B1E', '#4AACC5', '#F79647', '#7F6084', '#77A033', '#33558B', '#E59566', '#4F81BC', '#C0504E', 'Gradient(#7798BF:#214e96)'])
+                             .set('linewidth', 3)
+                             .set('exploded', [15])
+                             .set('shadowOffsetx', 2)
+                             .set('shadowOffsety', 2)
+                             .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])
+                             .set('labelsSticksList', true)
+                             .set('labelsSticksUsecolors', false)
+                             .set('textColor', '#000')
+                             .set('textSize', 12)
+                             .set('textAccessible', false)
+                             .roundRobin();
+
                         }
                     },
                 });
             }
 
-            function GetChartMaster(tooltipShow) {
-                var canvas = document.getElementById('cvsMaster');
-                var context = canvas.getContext('2d');
+            window.onload = function () {
+                var canvas4 = document.getElementById('cvsHbar');
+                var context = canvas4.getContext('2d');
                 context.clearRect(0, 0, 1500, 700);
                 yaxisName = '%'
 
                 $.ajax({
-                    url: '/Student/GetDataForChartMaster',
+                    url: '/Student/GetDataForChartAll',
                     type: 'POST',
                     cache: false,
                     success: function (datos) {
-                        RGraph.reset(canvas)
-                        var ytd = eval('[' + datos + ']');
-                        if (ytd.length > 0) {
-                            var tooltip1 = ['2013 - <b>' + ytd[0] + '%</b>', '2014 - <b>' + ytd[1] + '%</b>', '2015 - <b>' + ytd[2] + '%</b>', '2016 - <b>' + ytd[3] + '%</b>', '2017 - <b>' + ytd[4] + '%</b>'];
-                            var line = new RGraph.Line("cvsMaster", ytd)
-                                .set('labels', ['2013', '2014', '2015', '2016', '2017'])
-                                .set('gutter.left', 100)
-                                .set('colors', ['#181B1E'])
-                                .set('background.barcolor1', '#FFF')
-                                .set('background.barcolor2', '#FFF')
-                                .set('tickmarks', 'endcircle')
-                                .set('linewidth', 3)
-                                .set('shadow', true)
-                                .set('numxticks', 2)
-                                .set('key', ['Number of enrolled students over the years'])
-                                .set('key.position', 'gutter')
-                                .set('key.interactive', true)
-                                .set('shadow.blur', 20)
-                                .set('shadow.color', ['#16181a', '#510821'])
-                                .set('tickmarks', 'circle')
-                                .set('tooltips', tooltip1)
-                                .set('scale.zerostart', false)
-                                .set('ylabels', false)
-                                .set('background.grid.autofit.align', true)
-                                .set('text.angle', 90)
-                                .set('gutter.bottom', 40)
-                                .set('gutter.top', 40)
-                                .set('tooltips.hotspot.xonly', true)
-                                .draw()
-                                .trace();
 
-                            var yaxis = new RGraph.Drawing.YAxis('cvsMaster', line.gutterLeft)
-                                .set('max', line.max)
-                                .set('title', 'Master students')
-                                .set('colors', ['black'])
-                                .set('gutter.bottom', 55)
-                                .set('gutter.top', 40)
-                                //.set('max', ymaxValue)
-                                //.set('min', yminValue)
-                                .draw();
+                        RGraph.reset(canvas4);
+                        var ytd = eval('[' + datos + ']');
+
+                        if (ytd.length > 0) {
+
+                            var hbar = new RGraph.HBar("cvsHbar", ytd)
+                            .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'])
+                            .set('gutterLeftAutosize', true)
+                            .set('colors', ['Gradient(#7798BF:#214e96)'])
+                            .set('scaleZerostart', false)
+                            .set('textAccessible', false)
+                            .draw();
+
                         }
-                    },
-                });
+                    }
+                }
+                );
             }
-        </script>
-    </div>
+
+</script>
