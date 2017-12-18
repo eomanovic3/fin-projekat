@@ -35,104 +35,154 @@
     </div>
 </div>
 
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_bar' onclick="putImage('cvsBarChart')"> Download </button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_line' onclick="putImage('cvsLineChart')"> Download </button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_pie' onclick="putImage('cvsPie')"> Download </button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_hbar' onclick="putImage('cvsHbar')"> Download </button>
+    </div>
+</div>
+
 <script>
-            $(document).ready(function () {
-                GetChartAll();
-            });
+    $(document).ready(function () {
+        $('.download_bar').hide();
+        $('.download_line').hide();
+        $('.download_pie').hide();
+        $('.download_hbar').hide();
+        GetChartAll();
+    });
 
-            $('.first').click(function (e) {
+    function putImage(obj) {
+        var canvas1 = document.getElementById(obj);
+        if (canvas1.getContext) {
+            var ctx = canvas1.getContext("2d");
+            var myImage = canvas1.toDataURL("image/png");
+        }
+        var image = canvas1.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        // here is the most important part because if you dont replace you will get a DOM 18 
+        //exception.
 
-                if ($(".first").hasClass("fullscreen")) {
-                    $('.first').toggleClass('fullscreen');
-                    $('.second').show();
-                    $('.third').show();
-                    $('.fourth').show();
-                    $('#cvsBarChart').height(350);
-                    $('#cvsBarChart').width(600);
-                }
+        window.location.href = image;
 
-                else {
-                    $('.first').toggleClass('fullscreen');
-                    $('#cvsBarChart').height(800);
-                    $('#cvsBarChart').width(1200);
-                    $('.second').hide();
-                    $('.third').hide();
-                    $('.fourth').hide();
-                }
-                GetChartAll();
+    }
 
-            });
+    $('.first').click(function (e) {
 
+        if ($(".first").hasClass("fullscreen")) {
+            $('.first').toggleClass('fullscreen');
+            $('.second').show();
+            $('.third').show();
+            $('.fourth').show();
+            $('.download_bar').hide();
+            $('#cvsBarChart').height(350);
+            $('#cvsBarChart').width(600);
+        }
 
-            $('.second').click(function (e) {
+        else {
+            $('.first').toggleClass('fullscreen');
+            $('#cvsBarChart').height(800);
+            $('#cvsBarChart').width(1200);
+            $('.second').hide();
+            $('.third').hide();
+            $('.fourth').hide();
+            $('.download_bar').show();
+        }
+        GetChartAll();
 
-                if ($(".second").hasClass("fullscreen")) {
-                    $('.second').toggleClass('fullscreen');
-                    $('.first').show();
-                    $('.third').show();
-                    $('.fourth').show();
-                    $('#cvsLineChart').height(350);
-                    $('#cvsLineChart').width(600);
-                }
-
-                else {
-                    $('.second').toggleClass('fullscreen');
-                    $('#cvsLineChart').height(800);
-                    $('#cvsLineChart').width(1200);
-                    $('.first').hide();
-                    $('.third').hide();
-                    $('.fourth').hide();
-                }
-                GetChartAll();
-            });
+    });
 
 
-            $('.third').click(function (e) {
+    $('.second').click(function (e) {
 
-                if ($(".third").hasClass("fullscreen")) {
-                    $('.third').toggleClass('fullscreen');
-                    $('.second').show();
-                    $('.first').show();
-                    $('.fourth').show();
-                    $('#cvsPie').height(350);
-                    $('#cvsPie').width(600);
-                }
+        if ($(".second").hasClass("fullscreen")) {
+            $('.second').toggleClass('fullscreen');
+            $('.first').show();
+            $('.third').show();
+            $('.fourth').show();
+            $('#cvsLineChart').height(350);
+            $('#cvsLineChart').width(600);
+            $('.download_line').hide();
+        }
 
-                else {
-                    $('.third').toggleClass('fullscreen');
-                    $('#cvsPie').height(800);
-                    $('#cvsPie').width(1300);
-                    $('.second').hide();
-                    $('.first').hide();
-                    $('.fourth').hide();
-                }
-                GetChartAll();
+        else {
+            $('.second').toggleClass('fullscreen');
+            $('#cvsLineChart').height(800);
+            $('#cvsLineChart').width(1200);
+            $('.first').hide();
+            $('.third').hide();
+            $('.fourth').hide();
+            $('.download_line').show();
+        }
+        GetChartAll();
+    });
 
-            });
+
+    $('.third').click(function (e) {
+
+        if ($(".third").hasClass("fullscreen")) {
+            $('.third').toggleClass('fullscreen');
+            $('.second').show();
+            $('.first').show();
+            $('.fourth').show();
+            $('#cvsPie').height(350);
+            $('#cvsPie').width(600);
+            $('.download_pie').hide();
+        }
+
+        else {
+            $('.third').toggleClass('fullscreen');
+            $('#cvsPie').height(800);
+            $('#cvsPie').width(1300);
+            $('.second').hide();
+            $('.first').hide();
+            $('.fourth').hide();
+            $('.download_pie').show();
+        }
+        GetChartAll();
+
+    });
 
 
-            $('.fourth').click(function (e) {
+    $('.fourth').click(function (e) {
 
-                if ($(".fourth").hasClass("fullscreen")) {
-                    $('.fourth').toggleClass('fullscreen');
-                    $('.second').show();
-                    $('.third').show();
-                    $('.first').show();
-                    $('#cvsHbar').height(350);
-                    $('#cvsHbar').width(600);
-                }
+        if ($(".fourth").hasClass("fullscreen")) {
+            $('.fourth').toggleClass('fullscreen');
+            $('.second').show();
+            $('.third').show();
+            $('.first').show();
+            $('#cvsHbar').height(350);
+            $('#cvsHbar').width(600);
+            $('.download_hbar').hide();
+        }
 
-                else {
-                    $('.fourth').toggleClass('fullscreen');
-                    $('#cvsHbar').height(800);
-                    $('#cvsHbar').width(1200);
-                    $('.second').hide();
-                    $('.third').hide();
-                    $('.first').hide();
-                }
-                GetChartAll();
+        else {
+            $('.fourth').toggleClass('fullscreen');
+            $('#cvsHbar').height(800);
+            $('#cvsHbar').width(1200);
+            $('.second').hide();
+            $('.third').hide();
+            $('.first').hide();
+            $('.download_hbar').show();
+        }
+        GetChartAll();
 
-            });
+    });
 
             function GetChartAll(tooltipShow) {
                 var canvas = document.getElementById('cvsBarChart');
