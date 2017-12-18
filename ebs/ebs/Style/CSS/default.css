@@ -200,7 +200,7 @@ html { height: 100%;}
   top: 20px;  
   z-index: 999;
   display: block;
-  width: 32px;
+  width: 2.5%;
   height: 32px;
   margin-left: 15px;
   background: transparent;
@@ -345,4 +345,14 @@ html { height: 100%;}
     color: white;
     font-size:24px;
         
+}
+
+#BStudentTitle,  #FinancialTitle, #StudentTitle, 
+#AcademicTitle, #StudentYearTitle,#StudentDegreeTitle
+{
+    text-align:center;
+    font-size:24px;
+    color: darkblue;
+    width:97.5%;
+    margin-top:-2%;
 }

@@ -1,69 +1,258 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/Navbar.cshtml";
 }
 
-<!DOCTYPE html>
+<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Student</title>
-    <link rel="stylesheet" href="~/Style/CSS/default.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="~/libraries/RGraph.bar.js"></script>
-    <script src="~/libraries/RGraph.common.core.js"></script>
-    <script src="~/libraries/RGraph.common.dynamic.js"></script>
-    <script src="~/libraries/RGraph.common.key.js"></script>
-    <script src="~/libraries/RGraph.drawing.rect.js"></script>
-    <script src="~/libraries/RGraph.common.tooltips.js"></script>
-    <script src="~/libraries/RGraph.drawing.yaxis.js"></script>
-    <script src="~/libraries/RGraph.drawing.xaxis.js"></script>
-    <script src="~/libraries/RGraph.line.js"></script>
-    <script src="~/libraries/RGraph.common.effects.js"></script>
-    <script src="~/libraries/RGraph.pie.js"></script>
-    <script src="~/libraries/RGraph.drawing.marker1.js"></script>
-    <script src="~/libraries/RGraph.drawing.marker2.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-</head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li class="active"><a>@Html.ActionLink("Home", "Login", "Login")<span class="sr-only">(current)</span></a></li>
-                <li><a>@Html.ActionLink("Student service", "Student", "Student")</a></li>
-                <li><a>@Html.ActionLink("Financial service", "Financial", "Financial")</a></li>
-                <li><a>@Html.ActionLink("Academic service", "Academic", "Academic")</a></li>
-                <!--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Option</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>-->
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a></a><a class="pull-right" href="~/Home/Index">Log out</a></li>
-            </ul>
-
-        </div>
-    </nav>
-
-    <div class="container">
+<div id="AcademicTitle">Ispravi ovo</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1 cnv first">
         <div style="display: inline-block; margin: 35px">
-            <canvas id="cvsBacheleor" width="800" height="400">[No canvas support]</canvas>
+            <canvas id="cvsBarChart" height="350" width="600">[No canvas support]</canvas>
         </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 cnv second">
         <div style="display: inline-block; margin: 35px">
-            <canvas id="cvsMaster" width="800" height="400">[No canvas support]</canvas>
+            <canvas id="cvsLineChart" height="350" width="600">[No canvas support]</canvas>
         </div>
-   </div>
-</body>
-</html>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1 cnv third">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsPie" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 cnv fourth">
+        <div style="display: inline-block; margin-left: 60px">
+            <canvas id="cvsHbar" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+            $(document).ready(function () {
+                GetChartAll();
+            });
+
+            $('.first').click(function (e) {
+
+                if ($(".first").hasClass("fullscreen")) {
+                    $('.first').toggleClass('fullscreen');
+                    $('.second').show();
+                    $('.third').show();
+                    $('.fourth').show();
+                    $('#cvsBarChart').height(350);
+                    $('#cvsBarChart').width(600);
+                }
+
+                else {
+                    $('.first').toggleClass('fullscreen');
+                    $('#cvsBarChart').height(800);
+                    $('#cvsBarChart').width(1200);
+                    $('.second').hide();
+                    $('.third').hide();
+                    $('.fourth').hide();
+                }
+                GetChartAll();
+
+            });
+
+
+            $('.second').click(function (e) {
+
+                if ($(".second").hasClass("fullscreen")) {
+                    $('.second').toggleClass('fullscreen');
+                    $('.first').show();
+                    $('.third').show();
+                    $('.fourth').show();
+                    $('#cvsLineChart').height(350);
+                    $('#cvsLineChart').width(600);
+                }
+
+                else {
+                    $('.second').toggleClass('fullscreen');
+                    $('#cvsLineChart').height(800);
+                    $('#cvsLineChart').width(1200);
+                    $('.first').hide();
+                    $('.third').hide();
+                    $('.fourth').hide();
+                }
+                GetChartAll();
+            });
+
+
+            $('.third').click(function (e) {
+
+                if ($(".third").hasClass("fullscreen")) {
+                    $('.third').toggleClass('fullscreen');
+                    $('.second').show();
+                    $('.first').show();
+                    $('.fourth').show();
+                    $('#cvsPie').height(350);
+                    $('#cvsPie').width(600);
+                }
+
+                else {
+                    $('.third').toggleClass('fullscreen');
+                    $('#cvsPie').height(800);
+                    $('#cvsPie').width(1300);
+                    $('.second').hide();
+                    $('.first').hide();
+                    $('.fourth').hide();
+                }
+                GetChartAll();
+
+            });
+
+
+            $('.fourth').click(function (e) {
+
+                if ($(".fourth").hasClass("fullscreen")) {
+                    $('.fourth').toggleClass('fullscreen');
+                    $('.second').show();
+                    $('.third').show();
+                    $('.first').show();
+                    $('#cvsHbar').height(350);
+                    $('#cvsHbar').width(600);
+                }
+
+                else {
+                    $('.fourth').toggleClass('fullscreen');
+                    $('#cvsHbar').height(800);
+                    $('#cvsHbar').width(1200);
+                    $('.second').hide();
+                    $('.third').hide();
+                    $('.first').hide();
+                }
+                GetChartAll();
+
+            });
+
+            function GetChartAll(tooltipShow) {
+                var canvas = document.getElementById('cvsBarChart');
+                var canvas2 = document.getElementById('cvsLineChart');
+                var canvas3 = document.getElementById('cvsPie');
+
+                var context = canvas.getContext('2d');
+                context.clearRect(0, 0, 1500, 700);
+                yaxisName = 'students'
+
+                $.ajax({
+                    url: '/AllStudents/GetDataForChartAll',
+                    type: 'POST',
+                    cache: false,
+                    success: function (datos) {
+                        RGraph.reset(canvas);
+                        RGraph.reset(canvas2);
+                        RGraph.reset(canvas3);
+                        var ytd = eval('[' + datos + ']');
+                        if (ytd.length > 0) {
+                            var tooltip1 = ['Bachelor - <b>' + ytd[0] + '%</b>', 'Master - <b>' + ytd[1] + '%</b>', 'PhD - <b>' + ytd[2] + '%</b>'];
+                            var line = new RGraph.Line("cvsLineChart", ytd)
+                                .set('labels', ['BoE', 'MoE', 'PhD'])
+                                .set('gutter.left', 100)
+                                .set('colors', ['#181B1E'])
+                                .set('background.barcolor1', '#FFF')
+                                .set('background.barcolor2', '#FFF')
+                                .set('tickmarks', 'endcircle')
+                                .set('linewidth', 3)
+                                .set('shadow', true)
+                                .set('numxticks', 2)
+                                .set('key', ['Number of enrolled students by degrees'])
+                                .set('key.position', 'gutter')
+                                .set('key.interactive', true)
+                                .set('shadow.blur', 20)
+                                .set('shadow.color', ['#16181a', '#510821'])
+                                .set('tickmarks', 'circle')
+                                .set('tooltips', tooltip1)
+                                .set('scale.zerostart', false)
+                                .set('ylabels', false)
+                                .set('background.grid.autofit.align', true)
+                                .set('text.angle', 90)
+                                .set('gutter.bottom', 40)
+                                .set('gutter.top', 40)
+                                .set('tooltips.hotspot.xonly', true)
+                                .set('textAccessible', false)
+                                .draw()
+                                .trace();
+
+                            var yaxis = new RGraph.Drawing.YAxis('cvsLineChart', line.gutterLeft)
+                                .set('max', line.max)
+                                .set('title', 'Number of students')
+                                .set('colors', ['black'])
+                                .set('gutter.bottom', 55)
+                                .set('gutter.top', 40)
+                                .draw();
+
+                            var bar = new RGraph.Bar("cvsBarChart", ytd)
+                            .set('textSize', 14)
+                            .set('textAccessible', true)
+                            .set('labels', ['Bachelor', 'Master', 'PhD'])
+                            .set('shadowBlur', 0)
+                            .set('shadowOffsetx', 2)
+                            .set('shadowOffsety', 2)
+                            .set('strokestyle', 'rgba(0,0,0,0)')
+                            .set('backgroundGridVlines', false)
+                            .set('backgroundGridBorder', false)
+                            .set('noxaxis', true)
+                            .set('colors', ['Gradient(#7798BF:#214e96)'])
+                            .grow();
+
+
+                            var pie = new RGraph.Pie("cvsPie", ytd)
+                             .set('strokestyle', 'white')
+                             .set('colors', ['#DDDF0F', '#7798BF', '#181B1E'])
+                             .set('linewidth', 3)
+                             .set('exploded', [15])
+                             .set('shadowOffsetx', 2)
+                             .set('shadowOffsety', 2)
+                             .set('labels', ['Bachelor', 'Master', 'PhD'])
+                             .set('labelsSticksList', true)
+                             .set('labelsSticksUsecolors', false)
+                             .set('textColor', '#000')
+                             .set('textSize', 12)
+                             .set('textAccessible', false)
+                             .roundRobin();
+
+                        }
+                    },
+                });
+            }
+
+            window.onload = function () {
+                var canvas4 = document.getElementById('cvsHbar');
+                var context = canvas4.getContext('2d');
+                context.clearRect(0, 0, 1500, 700);
+                yaxisName = '%'
+
+                $.ajax({
+                    url: '/AllStudents/GetDataForChartAll',
+                    type: 'POST',
+                    cache: false,
+                    success: function (datos) {
+
+                        RGraph.reset(canvas4);
+                        var ytd = eval('[' + datos + ']');
+
+                        if (ytd.length > 0) {
+
+                            var hbar = new RGraph.HBar("cvsHbar", ytd)
+                            .set('labels', ['Bachelor', 'Master', 'PhD'])
+                            .set('gutterLeftAutosize', true)
+                            .set('colors', ['Gradient(#7798BF:#214e96)'])
+                            .set('scaleZerostart', false)
+                            .set('textAccessible', false)
+                            .draw();
+
+                        }
+                    }
+                }
+                );
+            }
+
+</script>
