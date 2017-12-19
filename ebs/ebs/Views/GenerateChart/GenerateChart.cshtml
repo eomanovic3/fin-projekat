@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/Navbar.cshtml";
+}
+<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+
+<div class="row">
+    <select id="sel" class="form-control col-lg-2 col-lg-offset-1">
+        <option>Studenti</option>
+        <option>Profesori</option>
+        <option>Predmeti</option>
+        <option>5 Godina</option>
+        <option>10 Godina</option>
+        <option>Protekle godine</option>
+        <option>Plate zaposlenika</option>
+        <option>Troskovi zaposlenika</option>
+    </select>
+
+    <select id="sel" class="form-control col-lg-2">
+        <option>Studenti</option>
+        <option>Profesori</option>
+        <option>Predmeti</option>
+        <option>5 Godina</option>
+        <option>10 Godina</option>
+        <option>Protekle godine</option>
+        <option>Plate zaposlenika</option>
+        <option>Troskovi zaposlenika</option>
+    </select>
+
+    <select id="sel" class="form-control col-lg-2">
+        <option>Bar chart</option>
+        <option>Line chart</option>
+        <option>Donut chart</option>
+        <option>Horizontal bar chart</option>
+    </select>
+
+    <button class="btn btn-primary btn-md col-lg-2">
+        Generate chart
+    </button>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-1">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvs" height="600" width="850" title="Chart" style="border-color:black; border-style:double; margin-left:-4em; margin-top:4em;">[No canvas support]</canvas>
+        </div>
+
+        </div>
+    </div>
+

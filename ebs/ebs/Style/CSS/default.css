@@ -419,3 +419,9 @@ html {
   bottom: 0;
   right: 0;
 }
+
+#sel{
+    margin-right:4em;
+    width:250px;
+}
+
