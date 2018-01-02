@@ -425,3 +425,6 @@ html {
     width:250px;
 }
 
+#radarImage:hover,#lineImage:hover,#barImage:hover,#donutImage:hover{
+    border:1.5px solid green;
+}
