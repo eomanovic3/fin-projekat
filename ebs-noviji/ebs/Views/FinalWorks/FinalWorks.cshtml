@@ -1,0 +1,194 @@
+﻿@{
+    Layout = "~/Views/Shared/Navbar.cshtml";
+}
+
+<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+<div id="FinancialTitle">Broj završnih radova po godinama i ciklusima - Bachelor, Masters, PhD</div>
+<body>
+    <div class="col-md-6">
+        <div>
+            <div>
+                <canvas id="cvs" height="537" width="762" title="Chart" style="border-color:black; margin-left:10%;border-style:double;">[No canvas support]</canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" >
+        <button class="accordion"  style="margin-left:10%;">Studentski radovi po ciklusima</button>
+        <div class="panel" style="margin-left:10%;">
+            @using (Ajax.BeginForm("FinalWorks", "FinalWorks", new AjaxOptions { UpdateTargetId = "divInterestDetails" }))
+            {
+                <div id="divInterestDetails" style="margin-left:15%;margin-right:10%;">
+                    <select id="xOsa" name="xOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
+                        <option label="Please Select " selected="selected"></option>
+                        <option value="ciklus">Broj studenata po ciklusima </option>
+                    </select>
+
+                    <select id="yOsa" name="yOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
+                        <option label="Please Select" selected="selected"></option>
+                        <option value="2000/2001">Akademska godina 2000/2001</option>
+                        <option value="2001/2002">Akademska godina 2001/2002</option>
+                        <option value="2002/2003">Akademska godina 2002/2003</option>
+                        <option value="2003/2004">Akademska godina 2003/2004</option>
+                        <option value="2004/2005">Akademska godina 2004/2005</option>
+                        <option value="2005/2006">Akademska godina 2005/2006</option>
+                        <option value="2006/2007">Akademska godina 2006/2007</option>
+                        <option value="2007/2008">Akademska godina 2007/2008</option>
+                        <option value="2008/2009">Akademska godina 2008/2009</option>
+                        <option value="2009/2010">Akademska godina 2009/2010</option>
+                        <option value="2010/2011">Akademska godina 2010/2011</option>
+                        <option value="2011/2012">Akademska godina 2011/2012</option>
+                        <option value="2012/2013">Akademska godina 2012/2013</option>
+                        <option value="2013/2014">Akademska godina 2013/2014</option>
+                        <option value="2014/2015">Akademska godina 2014/2015</option>
+                        <option value="2015/2016">Akademska godina 2015/2016</option>
+                        <option value="2016/2017">Akademska godina 2016/2017</option>
+                        <option value="2017/2018">Akademska godina 2017/2018</option>
+                    </select>
+                    <button style="text-align:center;width:100%; margin-top:1%;" onclick="submitForm(this)" id="submitButton" class="btn btn-primary">
+                        OK
+                    </button>
+                </div>
+            }        
+        </div>
+
+        <button class="accordion" style="margin-left:10%;">Studentski radovi po godinama</button>
+        <div class="panel" style="margin-left:10%;">
+            @using (Ajax.BeginForm("FinalWorks", "FinalWorks", new AjaxOptions { UpdateTargetId = "divInterestDetails" }))
+            {
+                <div id="divInterestDetails" style="margin-left:15%;margin-right:10%;">
+                    <select id="xOsa" name="xOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
+                        <option label="Please Select " selected="selected"></option>
+                        <option value="godina">Broj studenata po godinama </option>
+                    </select>
+
+                    <select id="yOsa" name="yOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
+                        <option label="Please Select" selected="selected"></option>
+                        <option value="bachelor">Bachelor</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                    <button style="text-align:center;width:100%; margin-top:1%;" onclick="submitForm(this)" id="submitButton" class="btn btn-primary">
+                        OK
+                    </button>
+                </div>
+            }
+       </div>
+   
+        <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+        </script>
+        <div id="buttons" style="margin-left:20%;margin-right:10%;margin-top:2%;">
+            <div class="col-md-4"><img src="~/Style/Pictures/bar.png" id="barImage" style="max-height:100%;max-width:100%;" onclick="myBarChart()" /></div>
+            <div class="col-md-4"><img src="~/Style/Pictures/donut.png" id="donutImage" style="max-height:100%;max-width:100%; " onclick="myDonutChart()" /></div>
+
+            <div class="col-md-4"><img src="~/Style/Pictures/line.png" id="lineImage" style="max-height:100%;max-width:100%;" onclick="myLineChart()" /></div>
+            <div class="col-md-4" style="margin-left:10%;"><img src="~/Style/Pictures/radar.png" id="radarImage" style="max-height:100%;max-width:100%;" onclick="myRadarChart()" /></div>
+            <div class="col-md-4"><img src="~/Style/Pictures/horizontal.png" id="horizontalImage" style="max-height:100%;max-width:100%;" onclick="myHorizontalBarChart()" /></div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    @section scripts {
+        <script src="~/Scripts/Chart.js"></script>
+        <script src="~/Scripts/Common.js"></script>
+        <script>
+            function submitForm(button) {
+                button.form.submit();
+
+            }
+            function myBarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/FinalWorks/ChartBarAndDonutDataStudents");
+                //alert(tData.data);
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: tData
+                });
+                $("#buttons").hide();
+            }
+
+            function myHorizontalBarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/FinalWorks/ChartBarAndDonutDataStudents");
+                var myBarChart = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: tData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $("#buttons").hide();
+            }
+
+            function myDonutChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/FinalWorks/ChartBarAndDonutDataStudents");
+                //alert(tData.data);
+                var myBarChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: tData
+                });
+
+                $("#buttons").hide();
+            }
+            function myLineChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/FinalWorks/ChartRadarAndLineDataStudents");
+                var myBarChart = new Chart(ctx, {
+                    type: 'line',
+                    data: tData
+                });
+                $("#buttons").hide();
+            }
+            function myRadarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/FinalWorks/ChartRadarAndLineDataStudents");
+                var myBarChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: tData
+                });
+                $("#buttons").hide();
+            }</script>
+    }
+
+</body>

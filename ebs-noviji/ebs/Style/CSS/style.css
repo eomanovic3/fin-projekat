@@ -1,0 +1,64 @@
+﻿body {
+    background: url(../Pictures/background.jpg) no-repeat;
+    background-size: cover;
+}
+
+
+.containerstyle {
+    position: absolute;
+    top: 22%;
+    width: 100%;
+    height: 45%;
+    text-align: center;
+    padding-top: 1em;
+    background-color: rgba(0, 0, 0, 0.4);
+   
+}
+
+#blurredbackground {
+    position: absolute;
+    top: 22%;
+    width: 100%;
+    height: 50%;
+    padding-top: 1em;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    z-index: -1;
+}
+
+img{
+    height="45px";
+}
+
+.form-group{
+    width: 25%;
+    top: 5%;
+    margin: 0 auto;
+    position: relative;
+    vertical-align: central;
+    display: block;
+}
+
+.navbar-md {
+    min-height: 80px
+}
+
+    .navbar-md .navbar-brand,
+    .navbar-md .navbar-nav > li > a {
+        padding-top: 30px;
+        padding-bottom: 30px
+    }
+
+    .navbar-md .navbar-brand {
+        height: 80px
+    }
+
+    .navbar-md .navbar-toggle {
+        margin: 12px 24px 12px 0px;
+        padding: 12px 14px 12px 20px;
+    }
+
+        .navbar-md .navbar-toggle .icon-bar {
+            width: 38px;
+        }

@@ -1,0 +1,303 @@
+﻿@{
+    Layout = "~/Views/Shared/Navbar.cshtml";
+}
+
+<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+<div id="FinancialTitle">Expenses on employees</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1 cnv first">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsBarChart" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 cnv second">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsLineChart" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-1 cnv third">
+        <div style="display: inline-block; margin: 35px">
+            <canvas id="cvsPie" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+    <div class="col-lg-4 col-lg-offset-1 cnv fourth">
+        <div style="display: inline-block; margin-left: 60px">
+            <canvas id="cvsHbar" height="350" width="600">[No canvas support]</canvas>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_bar' onclick="putImage('cvsBarChart')"> Download </button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_line' onclick="putImage('cvsLineChart')"> Download </button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_pie' onclick="putImage('cvsPie')"> Download </button>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='bottom-right'>
+        <button type='button' class='btn btn-primary btn-large btn-skip download_hbar' onclick="putImage('cvsHbar')"> Download </button>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.download_bar').hide();
+        $('.download_line').hide();
+        $('.download_pie').hide();
+        $('.download_hbar').hide();
+        GetChartAll();
+    });
+
+    function putImage(obj) {
+        var canvas1 = document.getElementById(obj);
+        if (canvas1.getContext) {
+            var ctx = canvas1.getContext("2d");
+            var myImage = canvas1.toDataURL("image/png");
+        }
+        var image = canvas1.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        // here is the most important part because if you dont replace you will get a DOM 18 
+        //exception.
+
+        window.location.href = image;
+
+    }
+
+    $('.first').click(function (e) {
+
+        if ($(".first").hasClass("fullscreen")) {
+            $('.first').toggleClass('fullscreen');
+            $('.second').show();
+            $('.third').show();
+            $('.fourth').show();
+            $('.download_bar').hide();
+            $('#cvsBarChart').height(350);
+            $('#cvsBarChart').width(600);
+        }
+
+        else {
+            $('.first').toggleClass('fullscreen');
+            $('#cvsBarChart').height(800);
+            $('#cvsBarChart').width(1200);
+            $('.second').hide();
+            $('.third').hide();
+            $('.fourth').hide();
+            $('.download_bar').show();
+        }
+        GetChartAll();
+
+    });
+
+
+    $('.second').click(function (e) {
+
+        if ($(".second").hasClass("fullscreen")) {
+            $('.second').toggleClass('fullscreen');
+            $('.first').show();
+            $('.third').show();
+            $('.fourth').show();
+            $('#cvsLineChart').height(350);
+            $('#cvsLineChart').width(600);
+            $('.download_line').hide();
+        }
+
+        else {
+            $('.second').toggleClass('fullscreen');
+            $('#cvsLineChart').height(800);
+            $('#cvsLineChart').width(1200);
+            $('.first').hide();
+            $('.third').hide();
+            $('.fourth').hide();
+            $('.download_line').show();
+        }
+        GetChartAll();
+    });
+
+
+    $('.third').click(function (e) {
+
+        if ($(".third").hasClass("fullscreen")) {
+            $('.third').toggleClass('fullscreen');
+            $('.second').show();
+            $('.first').show();
+            $('.fourth').show();
+            $('#cvsPie').height(350);
+            $('#cvsPie').width(600);
+            $('.download_pie').hide();
+        }
+
+        else {
+            $('.third').toggleClass('fullscreen');
+            $('#cvsPie').height(800);
+            $('#cvsPie').width(1300);
+            $('.second').hide();
+            $('.first').hide();
+            $('.fourth').hide();
+            $('.download_pie').show();
+        }
+        GetChartAll();
+
+    });
+
+
+    $('.fourth').click(function (e) {
+
+        if ($(".fourth").hasClass("fullscreen")) {
+            $('.fourth').toggleClass('fullscreen');
+            $('.second').show();
+            $('.third').show();
+            $('.first').show();
+            $('#cvsHbar').height(350);
+            $('#cvsHbar').width(600);
+            $('.download_hbar').hide();
+        }
+
+        else {
+            $('.fourth').toggleClass('fullscreen');
+            $('#cvsHbar').height(800);
+            $('#cvsHbar').width(1200);
+            $('.second').hide();
+            $('.third').hide();
+            $('.first').hide();
+            $('.download_hbar').show();
+        }
+        GetChartAll();
+
+    });
+
+            function GetChartAll(tooltipShow) {
+                var canvas = document.getElementById('cvsBarChart');
+                var canvas2 = document.getElementById('cvsLineChart');
+                var canvas3 = document.getElementById('cvsPie');
+
+                var context = canvas.getContext('2d');
+                context.clearRect(0, 0, 1500, 700);
+                yaxisName = 'students'
+
+                $.ajax({
+                    url: '/Financial/GetDataForChartAll',
+                    type: 'POST',
+                    cache: false,
+                    success: function (datos) {
+                        RGraph.reset(canvas);
+                        RGraph.reset(canvas2);
+                        RGraph.reset(canvas3);
+                        var ytd = eval('[' + datos + ']');
+                        if (ytd.length > 0) {
+                            var tooltip1 = ['Bachelor - <b>' + ytd[0] + '%</b>', 'Master - <b>' + ytd[1] + '%</b>', 'PhD - <b>' + ytd[2] + '%</b>'];
+                            var line = new RGraph.Line("cvsLineChart", ytd)
+                               .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'])
+                                .set('gutter.left', 100)
+                                .set('colors', ['#181B1E'])
+                                .set('background.barcolor1', '#FFF')
+                                .set('background.barcolor2', '#FFF')
+                                .set('tickmarks', 'endcircle')
+                                .set('linewidth', 3)
+                                .set('shadow', true)
+                                .set('numxticks', 2)
+                                .set('key', ['Number of enrolled students by degrees'])
+                                .set('key.position', 'gutter')
+                                .set('key.interactive', true)
+                                .set('shadow.blur', 20)
+                                .set('shadow.color', ['#16181a', '#510821'])
+                                .set('tickmarks', 'circle')
+                                .set('tooltips', tooltip1)
+                                .set('scale.zerostart', false)
+                                .set('ylabels', false)
+                                .set('background.grid.autofit.align', true)
+                                .set('text.angle', 90)
+                                .set('gutter.bottom', 40)
+                                .set('gutter.top', 40)
+                                .set('tooltips.hotspot.xonly', true)
+                                .set('textAccessible', false)
+                                .draw()
+                                .trace();
+
+                            var yaxis = new RGraph.Drawing.YAxis('cvsLineChart', line.gutterLeft)
+                                .set('max', line.max)
+                                .set('title', 'Number of students')
+                                .set('colors', ['black'])
+                                .set('gutter.bottom', 55)
+                                .set('gutter.top', 40)
+                                .draw();
+
+                            var bar = new RGraph.Bar("cvsBarChart", ytd)
+                            .set('textSize', 14)
+                            .set('textAccessible', true)
+                             .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'])
+                            .set('shadowBlur', 0)
+                            .set('shadowOffsetx', 2)
+                            .set('shadowOffsety', 2)
+                            .set('strokestyle', 'rgba(0,0,0,0)')
+                            .set('backgroundGridVlines', false)
+                            .set('backgroundGridBorder', false) //85392
+                            .set('noxaxis', true)
+                            .set('colorsSequential', true)
+                            .set('colors', ['#4AACC5', '#DDDF0F', '#9BBB58', '#F79647', '#C0504E', '#4AACC5', '#DDDF0F', '#9BBB58', '#F79647', '#C0504E', '#4AACC5', '#DDDF0F', '#9BBB58', '#F79647', '#C0504E'])
+
+                            .grow();
+
+
+                            var pie = new RGraph.Pie("cvsPie", ytd)
+                              .set('colors', ['#4F81BC', '#C0504E', '#9BBB58', '#8064A1', '#DDDF0F', '#7798BF', '#181B1E', '#4AACC5', '#F79647', '#7F6084', '#77A033', '#33558B', '#E59566', '#4F81BC', '#C0504E', 'Gradient(#7798BF:#214e96)'])
+                             .set('labels', ['AiE', 'EE', 'Assistant prof.', 'Assistant', 'Undergraduate T.A.', 'Vice dean', 'Full prof.', 'TK', 'Postgraduate T.A.', 'Dean', 'Associate prof.', 'IT', 'Prof.emeritus', 'Head of research department', 'Student service center'])
+                              .set('textSize', 12)
+                              .set('variant', 'donut')
+                              .set('strokestyle', 'transparent')
+                              .set('exploded', 3)
+                              .set('shadow', false)
+                              .set('textAccessible', true)
+                              .roundRobin({ 'radius': false, 'frames': 60 });
+
+                        }
+                    },
+                });
+            }
+
+            window.onload = function () {
+                var canvas4 = document.getElementById('cvsHbar');
+                var context = canvas4.getContext('2d');
+                context.clearRect(0, 0, 1500, 700);
+                yaxisName = '%'
+
+                $.ajax({
+                    url: '/Financial/GetDataForChartAll',
+                    type: 'POST',
+                    cache: false,
+                    success: function (datos) {
+
+                        RGraph.reset(canvas4);
+                        var ytd = eval('[' + datos + ']');
+
+                        if (ytd.length > 0) {
+
+                            var hbar = new RGraph.HBar("cvsHbar", ytd)
+                             .set('labels', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'])
+                            .set('gutterLeftAutosize', true)
+                            .set('colors', ['Gradient(#7798BF:#214e96)'])
+                            .set('scaleZerostart', false)
+                            .set('textAccessible', false)
+                            .draw();
+
+                        }
+                    }
+                }
+                );
+            }
+
+</script>

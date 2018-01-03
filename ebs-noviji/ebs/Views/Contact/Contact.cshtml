@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/Navbar.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elektrotehnički fakultet</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+
+        /* Optional: Makes the sample page fill the window. */
+        #okvir {
+            height: 70%;
+            width: 70%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+        <span class="hamb-top"></span>
+        <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+    </button>
+    <div id="map" style="width:60%;height:400px;margin-left:5%;margin-right:2%; float:left;"></div>
+    <div>
+        <p id="kontakt">
+        <p class="titloviZaKontakt">Adresa:</p>
+        Elektrotehnički fakultet u Sarajevu
+        Zmaja od Bosne, bb. KAMPUS Univerziteta,
+        71000 Sarajevo
+        Bosna i Hercegovina
+        <p class="titloviZaKontakt">Telefon:</p>
+        ++387 33 250 700
+        <p class="titloviZaKontakt">Fax:</p>
+        ++387 33 250 725
+        <p class="titloviZaKontakt">Email:</p>
+        email: etf@etf.unsa.ba
+        <p class="titloviZaKontakt">Web-site:</p>
+        www.etf.unsa.ba
+        <p class="titloviZaKontakt">Žiro račun fakulteta:</p>
+        1610000003210032
+        </p>
+    </div>
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 43.856763, lng: 18.398273 },
+                zoom: 15
+            });
+            var marker = new google.maps.Marker
+        (
+      {
+          position: new google.maps.LatLng(43.856763, 18.398273),
+          map: map,
+          title: 'ETF'
+      }
+    );
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4xFZZXDH1MuizMFNZT2fOnojpKBqKMno&callback=initMap&callback=initMap"
+            async defer></script>
+</body>
+</html>
