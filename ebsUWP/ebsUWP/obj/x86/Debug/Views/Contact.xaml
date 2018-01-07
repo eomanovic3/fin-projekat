@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="ebsUWP.Views.Contact"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ebsUWP.Views"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Maps:MapControl x:ConnectionId='1'
+            Grid.Column="1" Grid.Row="1" 
+            Margin="40, 0, 0, 0"
+            Width="Auto"
+            x:Name="MapControl1"
+            MapServiceToken="JYlCqNkuNA8eYNdtdbbY~AjaOau-3h6FwN_36JRHz8g~AuMf1tWPch4XjSFD9WUBuFUgyO2aJQrDFu6qzUwsCHLnXLyYUfcGlCB-_4_IQ9Hj"
+            ZoomLevel="16"
+            />
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="           Telefon:    +387  33  250  700            " Width="Auto"></TextBlock>
+
+    </Grid>
+</Page>
+
