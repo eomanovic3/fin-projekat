@@ -15,7 +15,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <RichTextBlock Grid.Row="1" HorizontalAlignment="Stretch" Height="100" Margin="30,0,20,0" VerticalAlignment="Center" Width="Auto">
+        <RichTextBlock Grid.Row="1" HorizontalAlignment="Stretch" Height="100" Margin="30,-100,20,0" VerticalAlignment="Center" Width="Auto">
             <Paragraph>
                 <Run Text="Elektrotehnički fakultet u Sarajevu je osnovan 1961. godine, a prva generacija studenata upisana je godinu dana ranije, u okviru tad postojećeg Tehničkog fakulteta u Sarajevu."/>
             </Paragraph>

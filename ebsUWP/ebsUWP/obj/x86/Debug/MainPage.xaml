@@ -13,13 +13,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <RelativePanel>
-            <Button x:ConnectionId='7' Name="HamburgerButton" 
+            <Button x:ConnectionId='9' Name="HamburgerButton" 
                     FontFamily="Segoe MDL2 Assets" 
                     Content="&#xE700;" 
                     FontSize="36" 
                                                   />
             
-            <Button x:ConnectionId='8' Name="BackButton"
+            <Button x:ConnectionId='10' Name="BackButton"
                     RelativePanel.RightOf="HamburgerButton" 
                     FontFamily="Segoe MDl2 Assets" 
                     FontSize="36"
@@ -52,7 +52,21 @@
                         </StackPanel>
                     </ListBoxItem>
 
-                    <ListBoxItem x:ConnectionId='5' Name="ContactItem">
+                    <ListBoxItem x:ConnectionId='5' Name="AcademicItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE7EE;" />
+                            <TextBlock Text="Academic" FontSize="24" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem x:ConnectionId='6' Name="FinancialItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE8B8;" />
+                            <TextBlock Text="Financial" FontSize="24" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem x:ConnectionId='7' Name="ContactItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE707;" />
                             <TextBlock Text="Contact" FontSize="24" Margin="20,0,0,0" />
@@ -62,7 +76,7 @@
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:ConnectionId='6' Name="MyFrame"></Frame>
+                <Frame x:ConnectionId='8' Name="MyFrame"></Frame>
             </SplitView.Content>
         </SplitView>
 

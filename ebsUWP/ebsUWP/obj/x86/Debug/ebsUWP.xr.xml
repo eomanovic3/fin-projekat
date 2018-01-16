@@ -97,13 +97,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
       <RootProperty Name="Width" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="MapServiceToken" />
-      <RootProperty Name="ZoomLevel" />
-    </RootType>
-    <RootType FullName="ebsUWP.Views.Contact" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="Name" />
       <RootProperty Name="DisplayMemberPath" />
@@ -149,6 +142,15 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBoxItem">
       <RootProperty Name="Content" />
     </RootType>
+    <RootType FullName="ebsUWP.Views.Academic" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="MapServiceToken" />
+      <RootProperty Name="ZoomLevel" />
+    </RootType>
+    <RootType FullName="ebsUWP.Views.Contact" />
+    <RootType FullName="ebsUWP.Views.Financial" />
     <RootType FullName="ebsUWP.Views.Students" />
   </Roots.RootTypes>
 </Roots>

@@ -1,5 +1,6 @@
 {
-  "version": 3,
+  "locked": false,
+  "version": 2,
   "targets": {
     "UAP,Version=v10.0.10586": {
       "Microsoft.CSharp/4.0.0": {
@@ -16581,60 +16582,5 @@
       "WinRTXamlToolkit.UWP >= 2.3.0"
     ],
     "UAP,Version=v10.0.10586": []
-  },
-  "packageFolders": {
-    "C:\\Users\\Sumejja\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {}
-  },
-  "project": {
-    "restore": {
-      "projectUniqueName": "C:\\Users\\Sumejja\\Desktop\\ebsUWP\\ebsUWP\\ebsUWP.csproj",
-      "projectName": "ebsUWP",
-      "projectPath": "C:\\Users\\Sumejja\\Desktop\\ebsUWP\\ebsUWP\\ebsUWP.csproj",
-      "projectJsonPath": "C:\\Users\\Sumejja\\Desktop\\ebsUWP\\ebsUWP\\project.json",
-      "packagesPath": "C:\\Users\\Sumejja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sumejja\\Desktop\\ebsUWP\\ebsUWP\\obj\\",
-      "projectStyle": "ProjectJson",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
-      ],
-      "configFilePaths": [
-        "C:\\Users\\Sumejja\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
-      ],
-      "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
-      }
-    },
-    "dependencies": {
-      "Microsoft.NETCore.UniversalWindowsPlatform": "[5.1.0, )",
-      "WinRTXamlToolkit.Controls.DataVisualization.UWP": "[2.3.0, )",
-      "WinRTXamlToolkit.UWP": "[2.3.0, )"
-    },
-    "frameworks": {
-      "uap10.0.10586": {}
-    },
-    "runtimes": {
-      "win10-arm": {
-        "#import": []
-      },
-      "win10-arm-aot": {
-        "#import": []
-      },
-      "win10-x64": {
-        "#import": []
-      },
-      "win10-x64-aot": {
-        "#import": []
-      },
-      "win10-x86": {
-        "#import": []
-      },
-      "win10-x86-aot": {
-        "#import": []
-      }
-    }
   }
 }

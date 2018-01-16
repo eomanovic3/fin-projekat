@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <ComboBox Name="cmbMake" 
                   DisplayMemberPath="MakeName" 
-                  SelectedValuePath="makeID" 
+                  SelectedValuePath="makeID"
                   Grid.Column="1" Grid.Row="0" 
                   HorizontalAlignment="Left" 
                   Margin="20,40,0,0" 
@@ -32,8 +32,11 @@
                   RenderTransformOrigin="-2.203,-5.49" 
                   Height="34" Width="250" PlaceholderText="x Osa" SelectionChanged="cmbMake_SelectedIndexChanged"
                   >
-            <ComboBoxItem Content="studenti"/>
-            <ComboBoxItem Content="smjerovi"/>
+            <ComboBoxItem Content="number of enrolled students regulary"/>
+            <ComboBoxItem Content="number of enrolled students repeatedly"/>
+            <ComboBoxItem Content="selffinancial students"/>
+            <ComboBoxItem Content="number of students over years"/>
+            <ComboBoxItem Content="graduated students by departments"/>
         </ComboBox>
 
         <ComboBox Name="cmbModel"
@@ -63,7 +66,7 @@
             HorizontalAlignment="Left"  
             VerticalAlignment="Top"  
             Margin="0" Height="250" Width="300" >
-                    <Charting:LineSeries Margin="0"  
+            <Charting:LineSeries Margin="0"  
             IndependentValuePath="Name"  
             DependentValuePath="Amount"  
             IsSelectionEnabled="True"/>
@@ -73,10 +76,10 @@
             HorizontalAlignment="Left"  
             VerticalAlignment="Top"  
             Margin="0" Height="250" Width="300" >
-                    <Charting:ColumnSeries Margin="0"  
+            <Charting:ColumnSeries Margin="0"  
                         IndependentValuePath="Name"  
                         DependentValuePath="Amount" CharacterSpacing="5"  
-                        IsSelectionEnabled="True"/> 
+                        IsSelectionEnabled="True"/>
         </Charting:Chart>
     </Grid>
 </Page>

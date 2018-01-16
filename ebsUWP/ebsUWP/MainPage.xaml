@@ -52,6 +52,20 @@
                         </StackPanel>
                     </ListBoxItem>
 
+                    <ListBoxItem Name="AcademicItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE7EE;" />
+                            <TextBlock Text="Academic" FontSize="24" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
+                    <ListBoxItem Name="FinancialItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE8B8;" />
+                            <TextBlock Text="Financial" FontSize="24" Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+
                     <ListBoxItem Name="ContactItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE707;" />

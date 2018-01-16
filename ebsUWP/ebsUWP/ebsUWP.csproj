@@ -106,8 +106,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Academic.xaml.cs">
+      <DependentUpon>Academic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Financial.xaml.cs">
+      <DependentUpon>Financial.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Students.xaml.cs">
       <DependentUpon>Students.xaml</DependentUpon>
@@ -146,7 +152,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Academic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Contact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Financial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

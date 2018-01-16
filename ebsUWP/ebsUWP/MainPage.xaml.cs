@@ -56,11 +56,22 @@ namespace ebsUWP
                 BackButton.Visibility = Visibility.Visible;
                 MyFrame.Navigate(typeof(Students));
             }
+            else if (AcademicItem.IsSelected)
+            {
+                BackButton.Visibility = Visibility.Visible;
+                MyFrame.Navigate(typeof(Academic));
+            }
+            else if (FinancialItem.IsSelected)
+            {
+                BackButton.Visibility = Visibility.Visible;
+                MyFrame.Navigate(typeof(Financial));
+            }
             else if (ContactItem.IsSelected)
             {
                 BackButton.Visibility = Visibility.Visible;
                 MyFrame.Navigate(typeof(Contact));
             }
+
         }
 
         /*private void Login(object sender, RoutedEventArgs e)
