@@ -62,7 +62,7 @@ html {
     }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 320px !important;
+    width: 340px !important;
 }
 
 #page-content-wrapper {
@@ -381,15 +381,15 @@ html {
         font-size: 24px;
     }
 
-#BStudentTitle, #FinancialTitle, #StudentTitle,
+#BStudentTitle, #FinancialTitle,#StudentTitle,
 #AcademicTitle, #StudentYearTitle, #StudentDegreeTitle {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     color: darkblue;
     width: 97.5%;
-    margin-top: -2%;
+    margin-top: -2%;    
+    margin-bottom:3%;
 }
-
 #map {
     height: 70%;
     width: 70%;
@@ -425,6 +425,77 @@ html {
     width:250px;
 }
 
-#radarImage:hover,#lineImage:hover,#barImage:hover,#donutImage:hover{
+/*#radarImage:hover,#lineImage:hover,#barImage:hover,#donutImage:hover,#horizontalImage:hover{
     border:1.5px solid green;
+}*/
+.ikonica{
+    color:white;
+    font-size:22px;
+}
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc; 
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
+/*#barImage:hover{ 
+    content:url(../Pictures/barChartTitle.jpg);
+    display: block;
+    height:130px;
+    top:23px;
+    width:200px;
+  -webkit-transition: content 4s ease-in !important;
+  -moz-transition: content 4s ease-in  !important;
+  -o-transition: content 4s ease-in  !important;
+  transition: content 4s ease-in  !important;
+}*/
+
+
+.img__wrap {
+  position: relative;
+  height: 130px;
+  width: 257px;
+  margin-left:17%;
+}
+
+.img__description {
+    max-width:80%;
+    max-height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+  font-size:20px;
+  text-align:center;
+  vertical-align:middle;
+  padding-top:25%;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+  cursor:pointer !important;
 }

@@ -224,11 +224,13 @@
     <Content Include="Style\Pictures\background.png" />
     <Content Include="Style\CSS\style.css" />
     <Content Include="Style\Pictures\bar.png" />
+    <Content Include="Style\Pictures\barChartTitle.jpg" />
     <Content Include="Style\Pictures\bi.jpg" />
     <Content Include="Style\Pictures\bi.png" />
     <Content Include="Style\Pictures\donut.png" />
     <Content Include="Style\Pictures\etf-zgrada.jpg" />
     <Content Include="Style\Pictures\etf.png" />
+    <Content Include="Style\Pictures\horizontal.png" />
     <Content Include="Style\Pictures\line.png" />
     <Content Include="Style\Pictures\radar.png" />
     <Content Include="Web.config">
@@ -237,16 +239,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\AcademicController.cs" />
-    <Compile Include="Controllers\AllStudentsController.cs" />
+    <Compile Include="Controllers\AcademicService\AcademicController.cs" />
+    <Compile Include="Controllers\AcademicService\EmployedUsersController.cs" />
+    <Compile Include="Controllers\FinancialService\FinancialController.cs" />
+    <Compile Include="Controllers\StudentService\FinalWorksController.cs" />
+    <Compile Include="Controllers\OtherControllers\AboutController.cs" />
+    <Compile Include="Controllers\StudentService\AllStudentsController.cs" />
     <Compile Include="Controllers\BStudentController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
-    <Compile Include="Controllers\FinancialController.cs" />
+    <Compile Include="Controllers\StudentService\BugetStudentsController.cs" />
+    <Compile Include="Controllers\OtherControllers\ContactController.cs" />
     <Compile Include="Controllers\GenerateChartController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\OtherControllers\HomeController.cs" />
+    <Compile Include="Controllers\OtherControllers\LoginController.cs" />
+    <Compile Include="Controllers\StudentService\GraduateStudentsController.cs" />
+    <Compile Include="Controllers\StudentService\SelfFinancingStudentsController.cs" />
     <Compile Include="db\DBConnection.cs" />
     <Compile Include="db\OracleDbConnection.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,9 +266,6 @@
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Academic\Academic.cshtml" />
-    <Content Include="Views\Student\Student.cshtml" />
-    <Content Include="Views\Financial\Financial.cshtml" />
     <Content Include="Views\Shared\Navbar.cshtml" />
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\About\About.cshtml" />
@@ -272,6 +275,13 @@
     <Content Include="Views\GenerateChart\GenerateChart.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\BugetStudents\BugetStudents.cshtml" />
+    <Content Include="Views\SelfFinancingStudents\SelfFinancingStudents.cshtml" />
+    <Content Include="Views\GraduateStudents\GraduateStudents.cshtml" />
+    <Content Include="Views\FinalWorks\FinalWorks.cshtml" />
+    <Content Include="Views\EmployedUsers\EmployedUsers.cshtml" />
+    <Content Include="Views\Academic\Academic.cshtml" />
+    <Content Include="Views\Financial\Financial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -20,17 +20,20 @@
         @using (Ajax.BeginForm("GenerateChart", "GenerateChart", new AjaxOptions { UpdateTargetId = "divInterestDetails" }))
         {
             <div id="divInterestDetails" style="margin-left:15%;margin-right:10%;">
-                <select id="salary" name="salary" class="form-control" style="margin-bottom:1%; text-align:center;">
+                <select id="xOsa" name="xOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
                     <option label="Please Select " selected="selected"></option>
                     <option>salary</option>
                     <option>userid</option>
+                    <option>id</option>
+                    <option>title</option>
                     <option>description</option>
                 </select>
 
-                <select id="description" name="description" class="form-control" style="margin-bottom:1%; text-align:center;">
+                <select id="yOsa" name="yOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
                     <option label="Please Select" selected="selected"></option>
                     <option>description</option>
                     <option>title</option>
+                    <option>userid</option>
                     <option>salary</option>
                 </select>
                 <button style="text-align:center;width:100%; margin-top:1%;" onclick="submitForm(this)" id="submitButton" class="btn btn-primary">
@@ -40,11 +43,13 @@
         }
 
         <div id="buttons" style="margin-left:20%;margin-right:10%;margin-top:2%;">
-            <div class="col-md-4" style="margin-left:10%;"><img src="~/Style/Pictures/bar.png" id="barImage" style="max-height:100%;max-width:100%;" onclick="myBarChart()" /></div>
+            <div class="col-md-4" ><img src="~/Style/Pictures/bar.png" id="barImage" style="max-height:100%;max-width:100%;" onclick="myBarChart()" /></div>
             <div class="col-md-4"><img src="~/Style/Pictures/donut.png" id="donutImage" style="max-height:100%;max-width:100%; " onclick="myDonutChart()" /></div>
 
-            <div class="col-md-4" style="margin-left:10%;"><img src="~/Style/Pictures/line.png" id="lineImage" style="max-height:100%;max-width:100%;" onclick="myLineChart()" /></div>
-            <div class="col-md-4"><img src="~/Style/Pictures/radar.png" id="radarImage" style="max-height:100%;max-width:100%;" onclick="myRadarChart()" /></div>
+            <div class="col-md-4" ><img src="~/Style/Pictures/line.png" id="lineImage" style="max-height:100%;max-width:100%;" onclick="myLineChart()" /></div>
+            <div class="col-md-4" style="margin-left:10%;" ><img src="~/Style/Pictures/radar.png" id="radarImage" style="max-height:100%;max-width:100%;" onclick="myRadarChart()" /></div>
+            <div class="col-md-4"><img src="~/Style/Pictures/horizontal.png" id="horizontalImage" style="max-height:100%;max-width:100%;" onclick="myHorizontalBarChart()" /></div>
+
         </div>
 
 
@@ -64,8 +69,6 @@
                 //-----Single Bar -------------
                 var c = document.getElementById("cvs");
                 var ctx = c.getContext("2d");
-                c.height = 600;
-                c.width = 850;
                 var tData = $.getValues("/GenerateChart/ChartBarAndDonutData");
                 var myBarChart = new Chart(ctx, {
                     type: 'bar',
@@ -74,12 +77,33 @@
                 $("#buttons").hide();
             }
 
+            function myHorizontalBarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/GenerateChart/ChartBarAndDonutData");
+                var myBarChart = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: tData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $("#buttons").hide();
+            }
+
             function myDonutChart() {
                 //-----Single Bar -------------
                 var c = document.getElementById("cvs");
                 var ctx = c.getContext("2d");
-                c.height = 600;
-                c.width = 850;
                 var tData = $.getValues("/GenerateChart/ChartBarAndDonutData");
                 var myBarChart = new Chart(ctx, {
                     type: 'doughnut',
@@ -92,8 +116,6 @@
                 //-----Single Bar -------------
                 var c = document.getElementById("cvs");
                 var ctx = c.getContext("2d");
-                c.height = 600;
-                c.width = 850;
                 var tData = $.getValues("/GenerateChart/ChartRadarAndLineData");
                 var myBarChart = new Chart(ctx, {
                     type: 'line',
@@ -105,8 +127,6 @@
                 //-----Single Bar -------------
                 var c = document.getElementById("cvs");
                 var ctx = c.getContext("2d");
-                c.height = 600;
-                c.width = 850;
                 var tData = $.getValues("/GenerateChart/ChartRadarAndLineData");
                 var myBarChart = new Chart(ctx, {
                     type: 'radar',

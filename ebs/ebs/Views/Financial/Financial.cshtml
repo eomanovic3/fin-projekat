@@ -7,7 +7,7 @@
     <span class="hamb-middle"></span>
     <span class="hamb-bottom"></span>
 </button>
-<div id="FinancialTitle">Expenses on employees</div>
+<div id="FinancialTitle">Troškovi svih uposlenika</div>
 <div class="row">
     <div class="col-lg-4 col-lg-offset-1 cnv first">
         <div style="display: inline-block; margin: 35px">
@@ -71,7 +71,7 @@
             var myImage = canvas1.toDataURL("image/png");
         }
         var image = canvas1.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        // here is the most important part because if you dont replace you will get a DOM 18 
+        // here is the most important part because if you dont replace you will get a DOM 18
         //exception.
 
         window.location.href = image;
@@ -187,7 +187,7 @@
 
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, 1500, 700);
-                yaxisName = 'students'
+                yaxisName = 'Uposlenici'
 
                 $.ajax({
                     url: '/Financial/GetDataForChartAll',
@@ -210,7 +210,7 @@
                                 .set('linewidth', 3)
                                 .set('shadow', true)
                                 .set('numxticks', 2)
-                                .set('key', ['Number of enrolled students by degrees'])
+                                .set('key', ['Broj uposlenika po smjerovima'])
                                 .set('key.position', 'gutter')
                                 .set('key.interactive', true)
                                 .set('shadow.blur', 20)
@@ -230,7 +230,7 @@
 
                             var yaxis = new RGraph.Drawing.YAxis('cvsLineChart', line.gutterLeft)
                                 .set('max', line.max)
-                                .set('title', 'Number of students')
+                                .set('title', 'Broj uposlenika')
                                 .set('colors', ['black'])
                                 .set('gutter.bottom', 55)
                                 .set('gutter.top', 40)

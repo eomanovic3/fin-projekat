@@ -15,24 +15,16 @@ namespace ebs.Controllers
     {
         static List<string> alldata = null;
         OracleDbConnection conn = new OracleDbConnection();
-        string xOsa = null;
-        string yOsa;
-        string chartChoice = null;
-        // GET: GenerateChart
+             // GET: GenerateChart
         public ActionResult GenerateChart()
         {
-            Session["Username"] = "Pliz";
             return View();
         }
         [HttpPost]
-        public ActionResult GenerateChart(string salary, string description, string chartChoice)
+        public ActionResult GenerateChart(string xOsa, string yOsa, string chartChoice)
         {
-            Session["Username"] = "Pliz";
-            xOsa = salary;
-            TempData["xOsa"] = salary;
-            yOsa = description;
-            TempData["yOsa"] = description;
-            this.chartChoice = chartChoice;
+            TempData["xOsa"] = xOsa;
+            TempData["yOsa"] = yOsa;
             ViewData["chartChoice"] = chartChoice;
             return View();
         }
@@ -68,10 +60,12 @@ namespace ebs.Controllers
                     borderWidth = new List<string> { "1" }
                 });
                 _chart.datasets = _dataSet;
+                conn.conn.Close();
                 return Json(_chart, JsonRequestBehavior.AllowGet);
             }
             else
             {
+                conn.conn.Close();
                 return Json(alldata, JsonRequestBehavior.AllowGet);
             }
 
@@ -108,13 +102,16 @@ namespace ebs.Controllers
                     borderWidth = new List<string> { "1" }
                 });
                 _chart.datasets = _dataSet;
-                return Json(_chart, JsonRequestBehavior.AllowGet);
+                conn.conn.Close();
+               return Json(_chart, JsonRequestBehavior.AllowGet);
             }
             else
             {
+                conn.conn.Close();
                 return Json(alldata, JsonRequestBehavior.AllowGet);
             }
 
         }
+
     }
 }

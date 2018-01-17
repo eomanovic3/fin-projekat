@@ -24,6 +24,7 @@
 
     <title>Student</title>
     <link rel="stylesheet" href="~/Style/CSS/default.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -72,46 +73,47 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/Login/Login">Home</a>
+                    <a href="/Login/Login">Početna</a>
                 </li>
                 <li>
-                    <a href="/About/About">About</a>
+                    <a href="/About/About">O nama</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Student service <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Studentska služba <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-header">Available statistics</li>
-                        <li><a href="/AllStudents/AllStudents">All students enrolled ever</a></li>
-                        <li><a href="/Student/Student">Students over the years</a></li>
-                        <li><a href="/BStudent/BStudent">BoE students over the years</a></li>
+                        <li class="dropdown-header">Dostupne statistike</li>
+                        <li><a href="/BugetStudents/BugetStudents">Studenti na državnom budžetu</a></li>
+                        <li><a href="/SelfFinancingStudents/SelfFinancingStudents">Samofinansirajući studenti</a></li>
+                        <li><a href="/AllStudents/AllStudents">Upisani studenti po godinama</a></li>
+                        <li><a href="/GraduateStudents/GraduateStudents">Diplomirani studenti po odsjecima</a></li>
+                        <li><a href="/FinalWorks/FinalWorks">Broj završnih radova po godinama</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Academic service <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Akademska služba <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-header">Available statistics</li>
-                        <li><a href="#">Professors vs assistents</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Courses professors</a></li>
+                        <li class="dropdown-header">Dostupne statistike</li>
+                        <li><a href="/EmployedUsers/EmployedUsers">Profesori vs asistenti</a></li>
+                        <li><a href="/Academic/Academic">Statistike o profesorima</a></li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Financial service<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Finansijska služba<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-header">Available statistics</li>
-                        <li><a href="/Financial/Financial">Expenses on employees</a></li>
+                        <li class="dropdown-header">Dostupne statistike</li>
+                        <li><a href="/Financial/Financial">Troškovi svih uposlenika</a></li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="/Contact/Contact">Contact</a>
+                    <a href="/Contact/Contact">Kontakt</a>
                 </li>
             </ul>
 
                 <ul id="logout_sidebar_button" class="nav nav-sidebar">
-                    <li><a href="/Home/Index">Signout</a></li>
+                    <li><a href="/Home/Index">Izađi <i class="fa fa-power-off ikonica" aria-hidden="true"></i></a></li>
                 </ul>
         </nav>
         <!-- /#sidebar-wrapper -->

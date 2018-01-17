@@ -1,0 +1,232 @@
+﻿@{
+    Layout = "~/Views/Shared/Navbar.cshtml";
+}
+
+<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+</button>
+<div id="FinancialTitle">Broj samofinansirajućih studenata po akademskim godinama tokom zadnjih (1-12) godina</div>
+<body>
+    <div class="col-md-6">
+        <div>
+            <div>
+                <canvas id="cvs" height="537" width="762" title="Chart" style="border-color:black; margin-left:10%;border-style:double;">[No canvas support]</canvas>
+            </div>
+            <button type='button' style="margin-left:45%; max-height:100%;max-width:100%; margin-top:5px;" class='btn btn-primary btn-large btn-skip download_bar' onclick="putImage('cvs')"> Skini chart u obliku .png zapisa</button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        @using (Ajax.BeginForm("SelfFinancingStudents", "SelfFinancingStudents", new AjaxOptions { UpdateTargetId = "divInterestDetails" }))
+        {<p style="margin-left:15%;margin-right:10%;">Odaberite neku od ponuđenih opcija: </p>
+
+            <div id="divInterestDetails" style="margin-left:15%;margin-right:10%;">
+                <select id="xOsa" name="xOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
+                    <option value="Regular" selected="selected">Redovni studenti</option>
+                    <option value="Repeated">Studenti koji obnavljaju godinu</option>
+                </select>
+                 Odaberite broj između 1 i 12:
+                <input type="number"  min="1" max="12" id="yOsa" name="yOsa" class="form-control" style="margin-bottom:1%; text-align:center;">
+                <button style="text-align:center;width:100%; margin-top:1%;" onclick="submitForm(this)" id="submitButton" class="btn btn-primary">
+                    Klikni OK za nastavak
+                </button>
+            </div>
+        }
+
+        @*<div id="buttons" style="margin-left:20%;margin-right:10%;margin-top:2%;">
+            <div class="col-md-4"><img src="~/Style/Pictures/bar.png" id="barImage" style="max-height:100%;max-width:100%;" onclick="myBarChart()" /></div>
+            <div class="col-md-4"><img src="~/Style/Pictures/donut.png" id="donutImage" style="max-height:100%;max-width:100%; " onclick="myDonutChart()" /></div>
+
+            <div class="col-md-4"><img src="~/Style/Pictures/line.png" id="lineImage" style="max-height:100%;max-width:100%;" onclick="myLineChart()" /></div>
+            <div class="col-md-4" style="margin-left:10%;"><img src="~/Style/Pictures/radar.png" id="radarImage" style="max-height:100%;max-width:100%;" onclick="myRadarChart()" /></div>
+            <div class="col-md-4"><img src="~/Style/Pictures/horizontal.png" id="horizontalImage" style="max-height:100%;max-width:100%;" onclick="myHorizontalBarChart()" /></div>
+
+        </div>*@
+        <div style="margin-top:2%;">
+            <div class="img__wrap col-md-3">
+                <img src="~/Style/Pictures/bar.png" id="barImage" style="max-width:100%; max-height:100%;" />
+                <p class="img__description" onclick="myBarChart()">Bar chart</p>
+            </div>
+            <div class="img__wrap col-md-3" style="margin-left:-30px;">
+                <img src="~/Style/Pictures/donut.png" id="donutImage" style="max-height:100%;max-width:100%; " />
+                <p class="img__description" onclick="myDonutChart()">Donut chart.</p>
+            </div>
+            <div class="img__wrap col-md-3" style="margin-left:-30px;">
+                <img src="~/Style/Pictures/radar.png" id="radarImage" style="max-height:100%;max-width:100%;" />
+                <p class="img__description" onclick="myRadarChart()">Radar chart.</p>
+            </div>
+            <div class="img__wrap col-md-3">
+                <img src="~/Style/Pictures/line.png" id="lineImage" style="max-height:100%;max-width:100%;" />
+                <p class="img__description" onclick="myLineChart()">Line chart.</p>
+            </div>
+
+            <div class="img__wrap col-md-3" style="margin-left:-30px;">
+                <img src="~/Style/Pictures/horizontal.png" id="horizontalImage" style="max-height:100%;max-width:100%;" />
+                <p class="img__description" onclick="myHorizontalBarChart()">Horizontal chart.</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    @section scripts {
+        <script src="~/Scripts/Chart.js"></script>
+        <script src="~/Scripts/Common.js"></script>
+        <script>
+            function submitForm(button) {
+                button.form.submit();
+
+            }
+            function myBarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/SelfFinancingStudents/ChartBarAndDonutDataStudents");
+                //alert(tData.data);
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: tData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $("#buttons").hide();
+            }
+
+            function myHorizontalBarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/SelfFinancingStudents/ChartBarAndDonutDataStudents");
+                var myBarChart = new Chart(ctx, {
+                    type: 'horizontalBar',
+                    data: tData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $("#buttons").hide();
+            }
+
+            function myDonutChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/SelfFinancingStudents/ChartBarAndDonutDataStudents");
+                //alert(tData.data);
+                var myBarChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: tData
+                });
+
+                $("#buttons").hide();
+            }
+            function myLineChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/SelfFinancingStudents/ChartRadarAndLineDataStudents");
+                var myBarChart = new Chart(ctx, {
+                    type: 'line',
+                    data: tData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $("#buttons").hide();
+            }
+            function myRadarChart() {
+                //-----Single Bar -------------
+                var c = document.getElementById("cvs");
+                var ctx = c.getContext("2d");
+                var tData = $.getValues("/SelfFinancingStudents/ChartRadarAndLineDataStudents");
+                var myBarChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: tData,
+                    options: {
+                        responsive: true,
+                        scales: {
+                            yAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                borderWidth: 40,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+                $("#buttons").hide();
+            }</script>
+    }
+
+</body>
+
+
+<script>
+    function putImage(obj) {
+        var canvas1 = document.getElementById(obj);
+        if (canvas1.getContext) {
+            var ctx = canvas1.getContext("2d");
+            var myImage = canvas1.toDataURL("image/png");
+        }
+        var image = canvas1.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        // here is the most important part because if you dont replace you will get a DOM 18
+        //exception.
+
+        window.location.href = image;
+
+    }
+
+</script>
