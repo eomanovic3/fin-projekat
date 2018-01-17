@@ -1,1 +1,1 @@
-C:\Users\AP\Desktop\Fakultet\fin-projekat\ebsUWP\ebsUWP\ebsUWP.csproj;x86
+C:\Users\ooemi\OneDrive\Desktop\fin-projekat\ebsUWP\ebsUWP\ebsUWP.csproj;x86
